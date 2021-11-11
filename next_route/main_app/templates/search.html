@@ -3,6 +3,8 @@
 {% block content %}
     <form action="/route">
         <div>
+            <label for="location">Where do you want to climb?</label>
+            <input type="text" id="location" name="location" required>
             <label for="min-difficulty">Min Difficulty</label>
             <select id="min-difficulty" name="min-difficulty">
                 <option value="5.0">5.0</option>

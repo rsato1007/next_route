@@ -127,5 +127,6 @@ class RouteSearch(ListView):
             q = difficulty_range(min_difficulty, max_difficulty)
             return Route.objects.filter(
                 difficulty__in=q,
-                pitch__range=(0, int(self.request.GET.get("max-pitches")))
+                pitch__range=(0, int(self.request.GET.get("max-pitches"))),
+                location__icontains=self.request.GET.get("location")
             )
