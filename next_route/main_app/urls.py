@@ -2,9 +2,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('main_app.urls'))
-
     # main URLs
     # List of routes I need: search page, splash
     path('', views.Splash.as_view(), name="splash_page")
