@@ -8,6 +8,7 @@ urlpatterns = [
 
     # route urls
     # List of routes I need: create, edit, delete, view
+    path('route/', views.RouteSearch.as_view(), name="route_search"),
 
     # user urls
     # List of users I need: profile page, create user, edit user, delete user (icebox)

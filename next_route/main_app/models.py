@@ -7,13 +7,12 @@ class CustomUser(AbstractUser):
     location = models.CharField(max_length=100)
     is_admin = models.BooleanField(default=False)
     is_banned = models.BooleanField(default=False)
+    image = models.FileField(blank=True)
     
 class Route(models.Model):
-
     name = models.CharField(max_length=50)
     location = models.CharField(max_length=100)
-    # reviews
-    difficulty = models.DecimalField(max_digits=3, decimal_places=2)
+    difficulty = models.CharField(max_length=6)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="route")
     description = models.CharField(max_length=2200)
     image = models.FileField(blank=True)
