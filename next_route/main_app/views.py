@@ -57,6 +57,16 @@ class ProfilePage(TemplateView):
 
 
 # Route Related Views
+# Function that returns a list of pitch ranges based on user input.
+def pitch_range(max_val):
+    max = int(max_val)
+    if max >= 10:
+        max = 10
+    range_value = []
+    for i in range(0, max + 1):
+        range_value.append(i)
+    return range_value
+
 # Crafting function that returns a list of difficulty values:
 def difficulty_range(val1, val2):
     # Validation 1
