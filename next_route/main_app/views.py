@@ -55,7 +55,6 @@ class ProfilePage(TemplateView):
 
 # When you do search, use this as part of the search algorithm: https://stackoverflow.com/questions/33104897/django-filter-objects-by-integer-between-two-values
 
-
 # Route Related Views
 # Function that returns a list of pitch ranges based on user input.
 def pitch_range(max_val):
@@ -126,4 +125,7 @@ class RouteSearch(ListView):
             min_difficulty = self.request.GET.get("min-difficulty")
             max_difficulty = self.request.GET.get('max-difficulty')
             q = difficulty_range(min_difficulty, max_difficulty)
-            return Route.objects.filter(difficulty__in=q)
+            return Route.objects.filter(
+                difficulty__in=q,
+                pitch__range=(0, int(self.request.GET.get("max-pitches")))
+            )
