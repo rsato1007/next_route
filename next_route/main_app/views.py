@@ -1,7 +1,11 @@
 from django.shortcuts import render, redirect, reverse
 from django.views import View
 from django.views.generic.base import TemplateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import DetailView
+from .models import Route, CustomUser, Review, Like
 from .forms import MyUserCreationForm
+from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 # This is only temporary until I actually add something.
