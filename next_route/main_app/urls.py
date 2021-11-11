@@ -4,7 +4,8 @@ from . import views
 urlpatterns = [
     # main URLs
     # List of routes I need: search page, splash
-    path('', views.Splash.as_view(), name="splash_page")
+    path('', views.Splash.as_view(), name="splash_page"),
+    path('accounts/signup/', views.Signup.as_view(), name='signup')
 
     # route urls
     # List of routes I need: create, edit, delete, view
