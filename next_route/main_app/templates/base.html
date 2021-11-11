@@ -10,7 +10,22 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
+    <nav>
+        <div>
+            NextRoute
+        </div>
+        <a href="">Find Routes</a>
+        <!-- INSERT CONDITIONAL FOR LOGIN/LOGOUT -->
+        <a href="">Login</a>
+        <a href="">Signup</a>
+        <a href="">Profile</a>
+    </nav>
     {% block content %}
     {% endblock %}
+    <footer>
+        <p>NextRoute</p>
+        <hr>
+        <p>© 2021 Designs by Robert Sato</p>
+    </footer>
 </body>
 </html>
