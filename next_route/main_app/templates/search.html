@@ -62,8 +62,37 @@
     <div>
         {% if route_list %}
             {% for route in route_list %}
+                <h3>Results for {{ forloop.counter }} routes</h3>
+            {% endfor %}
+        {% else %}
+            <h3>No Routes Found</h3>
+        {% endif %}
+    </div>
+    <div>
+        {% if route_list %}
+            {% for route in route_list %}
                 <div>
-                    {{ route.difficulty }}
+                    <div>
+                        <p>{{ route.name }}</p>
+                        {% for review in route.review.all %}
+                            <p>{{ forloop.counter }} Reviews</p>
+                        {% empty %}
+                            <p>0 Reviews</p>
+                        {% endfor %}
+                        <p>Located: {{ route.location }}</p>
+                        <a href="">View Route</a>
+                        <div>
+                            <p>Difficulty {{ route.difficulty }}</p>
+                            <p>Pitches {{ route.pitch }}</p>
+                            <p>Type {{ route.climb_type }}</p>
+                        </div>
+                    </div>
+                    <div>
+                        {% if route.image %}
+                        {% else %}
+                            <p>No Image Yet</p>
+                        {% endif %}
+                    </div>
                 </div>
             {% endfor %}
         {% else %}
