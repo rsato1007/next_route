@@ -1,7 +1,33 @@
 {% extends 'base.html' %}
 {% block title %} ____'s Page {% endblock %}
 {% block content %}
+    <!-- Profile Card -->
     <div>
-        If you see this, this is the profile page.
+        <div>profile image.</div>
+        <div>{{ user_profile.username }}</div>
+        <div>{{ user.date_joined }}</div>
+    </div>
+    <!-- These need to be altered on the buttons only, but this is okay for now. -->
+    <div>
+        <div class="user_routes_button">
+            Routes
+        </div>
+        <div class="user_reviews_button">
+            Reviews
+        </div>
+    </div>
+    <div class="user_routes show">
+        {% for route in routes %}
+            <p>{{ forloop.counter }} Route(s) from {{ user_profile.username }}</p>
+        {% empty %}
+            <p> No routes yet from {{ user_profile.username }}</p>
+        {% endfor %}
+    </div>
+    <div class="user_reviews no-show">
+        {% for review in reviews %}
+            <p>{{ forloop.counter }} Review(s) from {{ user_profile.username }}</p>
+        {% empty %}
+            <p> No reviews yet from {{ user_profile.username }}</p>
+    {% endfor %}
     </div>
 {% endblock %}

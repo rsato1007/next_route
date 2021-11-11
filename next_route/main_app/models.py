@@ -14,7 +14,7 @@ class Route(models.Model):
     location = models.CharField(max_length=100)
     # reviews
     difficulty = models.DecimalField(max_digits=3, decimal_places=2)
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="route")
     description = models.CharField(max_length=2200)
     image = models.FileField(blank=True)
     climb_type = models.CharField(max_length=30)
@@ -25,8 +25,8 @@ class Route(models.Model):
         return self.name
 
 class Review(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="reviews")
-    route = models.ForeignKey(Route, on_delete=models.CASCADE, related_name="reviews")
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="review")
+    route = models.ForeignKey(Route, on_delete=models.CASCADE, related_name="review")
     rating = models.DecimalField(
         max_digits=2, 
         decimal_places=1,
@@ -39,5 +39,5 @@ class Review(models.Model):
     posted_at = models.DateTimeField(auto_now_add=True)
 
 class Like(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="likes")
-    review = models.ForeignKey(Review, on_delete=models.CASCADE, related_name="likes")
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="like")
+    review = models.ForeignKey(Review, on_delete=models.CASCADE, related_name="like")
