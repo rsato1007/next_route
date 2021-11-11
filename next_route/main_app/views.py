@@ -12,6 +12,8 @@ from django.utils.decorators import method_decorator
 from django.http import HttpResponse
 from django.db.models import Q
 from decimal import Decimal
+import operator
+from functools import reduce
 
 # Create your views here.
 class Splash(TemplateView):
@@ -108,10 +110,10 @@ class RouteSearch(ListView):
         # This allows me to go to this page even if no query is being made.
         if not self.request.GET:
             print("You should see this")
-        # We might want to circle back on this one later.
         else:
             # Good Problem: We're providing two values and we only want a list returned with values in between those two.
+            # Let's do Validations in here instead.
+            min_difficulty = self.request.GET.get("min-difficulty")
             max_difficulty = self.request.GET.get('max-difficulty')
-            difficulty_range('5.0', '5.11')
-            print(Route.objects.filter(Q(difficulty__contains=max_difficulty)))
-            return Route.objects.filter(Q(difficulty__contains=max_difficulty))
+            q = difficulty_range(min_difficulty, max_difficulty)
+            return Route.objects.filter(difficulty__in=q)

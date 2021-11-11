@@ -3,6 +3,25 @@
 {% block content %}
     <form action="/route">
         <div>
+            <label for="min-difficulty">Min Difficulty</label>
+            <select id="min-difficulty" name="min-difficulty">
+                <option value="5.0">5.0</option>
+                <option value="5.1">5.1</option>
+                <option value="5.2">5.2</option>
+                <option value="5.3">5.3</option>
+                <option value="5.4">5.4</option>
+                <option value="5.5">5.5</option>
+                <option value="5.6">5.6</option>
+                <option value="5.7">5.7</option>
+                <option value="5.8">5.8</option>
+                <option value="5.9">5.9</option>
+                <option value="5.10">5.10</option>
+                <option value="5.11">5.11</option>
+                <option value="5.12">5.12</option>
+                <option value="5.13">5.13</option>
+                <option value="5.14">5.14</option>
+                <option value="5.15">5.15</option>
+            </select>
             <label for="max-difficulty">Max Difficulty</label>
             <select id="max-difficulty" name="max-difficulty">
                 <option value="5.0">5.0</option>
@@ -27,9 +46,11 @@
     </form>
     <div>
         {% if route_list %}
-            <div>
-                Testing if this shows.
-            </div>
+            {% for route in route_list %}
+                <div>
+                    {{ route.difficulty }}
+                </div>
+            {% endfor %}
         {% else %}
             <div>
                 No Routes Found
