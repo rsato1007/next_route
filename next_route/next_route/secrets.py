@@ -1,1 +1,1 @@
-APP_SECRET_KEY = "Corgis are awesome"
+APP_SECRET_KEY = "Husky Dog"
