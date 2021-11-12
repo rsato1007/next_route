@@ -51,7 +51,7 @@
                         <div>
                             {% if user.is_authenticated and review.user.username == user.username %}
                                 <p class="edit-review-button">Edit Review</p>
-                                <p>Delete Review</p>
+                                <p class="delete-review-button">Delete Review</p>
                             {% endif %}
                         </div>
                     </div>
@@ -127,6 +127,15 @@
                             <input type="hidden" id="route" name="route" value="{{route.id}}"> 
                             <input type="submit">
                         </form>
+                    </div>
+                    <div class="delete-review-form-container no-show">
+                        <div>
+                            <div></div>
+                            <p>Delete Review?</p>
+                            <p>This can't be undone</p>
+                            <div class="delete-review-cancel-button">Cancel</div>
+                            <a href="{% url 'review_delete' route.pk review.pk %}"><div>Delete</div></a>
+                        </div>
                     </div>
                 {% empty %}
                     <p>No reviews yet.</p>

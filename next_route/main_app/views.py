@@ -184,3 +184,9 @@ class ReviewUpdate(View):
         content = request.POST.get('content')
         Review.objects.filter(pk=pk).update(rating=rating, content=content)
         return redirect('route_page', pk=request.POST.get('route'))
+
+class ReviewDelete(View):
+    def get(self, request, pk, review_pk):
+        review = Review.objects.get(pk=review_pk)
+        review.delete()
+        return redirect('route_page', pk=pk)
