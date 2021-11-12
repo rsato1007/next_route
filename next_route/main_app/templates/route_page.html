@@ -32,7 +32,11 @@
             <div>Route Reviews:</div>
             <div>
                 <p>4 out of 5 Stars</p>
-                <div>Write a Review</div>
+                {% if user.is_authenticated %}
+                    <div class="write-review-button">Write a Review</div>
+                {% else %}
+                    <a href="{% url 'signup' %}"><div>Write a Review</div></a>
+                {% endif %}
             </div>
             <div class="review-list-container">
                 {% for review in reviews %}
@@ -56,5 +60,8 @@
                 {% endfor %}
             </div>
         </div>
+    </div>
+    <div class="route-review-form-container no-show">
+        <p>You should see this if you plan on reviewing this route.</p>
     </div>
 {% endblock %}
