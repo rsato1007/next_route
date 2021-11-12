@@ -118,7 +118,7 @@ class RouteSearch(ListView):
     def get_queryset(self):
         # This allows me to go to this page even if no query is being made.
         if not self.request.GET:
-            print("You should see this")
+            print("ROUTE SEARCH")
         else:
             # Good Problem: We're providing two values and we only want a list returned with values in between those two.
             # Let's do Validations in here instead.
@@ -130,3 +130,20 @@ class RouteSearch(ListView):
                 pitch__range=(0, int(self.request.GET.get("max-pitches"))),
                 location__icontains=self.request.GET.get("location")
             )
+
+class CreateRoute(View):
+
+    def get(self, request):
+        return render(request, 'create_route.html')
+
+    def post(self, request):
+        name = request.POST.get('name')
+        location = request.POST.get('location')
+        difficulty = request.POST.get('difficulty')
+        description = request.POST.get('description')
+        image = request.POST.get('image')
+        climb_type = request.POST.get('climb_type')
+        pitch = request.POST.get('pitch')
+        user = CustomUser.objects.get(pk=request.POST.get('user'))
+        Route.objects.create(name=name, location=location, difficulty=difficulty, description=description, image=image, climb_type=climb_type, pitch=pitch, user=user)
+        return redirect('route_search')
