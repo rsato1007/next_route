@@ -8,6 +8,7 @@ from .forms import MyUserCreationForm
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.core.exceptions import PermissionDenied
 # This is only temporary until I actually add something.
 from django.http import HttpResponse
 from django.db.models import Q
@@ -134,7 +135,10 @@ class RouteSearch(ListView):
 class CreateRoute(View):
 
     def get(self, request):
-        return render(request, 'create_route.html')
+        if request.user.is_authenticated:
+            return render(request, 'create_route.html')
+        else:
+            raise PermissionDenied()
 
     def post(self, request):
         name = request.POST.get('name')
@@ -144,7 +148,7 @@ class CreateRoute(View):
         image = request.POST.get('image')
         climb_type = request.POST.get('climb_type')
         pitch = request.POST.get('pitch')
-        user = CustomUser.objects.get(pk=request.POST.get('user'))
+        user = CustomUser.objects.get(pk=request.user.pk)
         route = Route.objects.create(name=name, location=location, difficulty=difficulty, description=description, image=image, climb_type=climb_type, pitch=pitch, user=user)
         return redirect('route_page', pk=route.pk)
 
