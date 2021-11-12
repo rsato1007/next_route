@@ -145,8 +145,8 @@ class CreateRoute(View):
         climb_type = request.POST.get('climb_type')
         pitch = request.POST.get('pitch')
         user = CustomUser.objects.get(pk=request.POST.get('user'))
-        Route.objects.create(name=name, location=location, difficulty=difficulty, description=description, image=image, climb_type=climb_type, pitch=pitch, user=user)
-        return redirect('route_search')
+        route = Route.objects.create(name=name, location=location, difficulty=difficulty, description=description, image=image, climb_type=climb_type, pitch=pitch, user=user)
+        return redirect('route_page', pk=route.pk)
 
 class RoutePage(DetailView):
     model = Route
