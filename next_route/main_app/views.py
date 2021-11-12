@@ -167,6 +167,8 @@ class RouteUpdate(UpdateView):
     def get_success_url(self):
         return reverse('route_page', kwargs={'pk': self.object.pk})
 
+# ALL REVIEW VIEWS
+
 class CreateReview(View):
     def post(self, request):
         user = CustomUser.objects.get(pk=request.POST.get('user'))
@@ -174,4 +176,11 @@ class CreateReview(View):
         rating = request.POST.get('rating')
         content = request.POST.get('content')
         Review.objects.create(user=user, route=route, rating=rating, content=content)
+        return redirect('route_page', pk=request.POST.get('route'))
+
+class ReviewUpdate(View):
+    def post(self, request, pk):
+        rating = request.POST.get('rating')
+        content = request.POST.get('content')
+        Review.objects.filter(pk=pk).update(rating=rating, content=content)
         return redirect('route_page', pk=request.POST.get('route'))

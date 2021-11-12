@@ -50,10 +50,83 @@
                         <div>{{ review.content }}</div>
                         <div>
                             {% if user.is_authenticated and review.user.username == user.username %}
-                                <p>Edit Review</p>
+                                <p class="edit-review-button">Edit Review</p>
                                 <p>Delete Review</p>
                             {% endif %}
                         </div>
+                    </div>
+                    <div class="edit-review-form no-show">
+                        <form method="post" action="/review/{{ review.pk }}/update/">
+                            {% csrf_token %}
+                            <label for="rating">Rating:</label>
+                            <select id="rating" name="rating" required>
+                                {% if review.rating == 0.5 %}
+                                    <option value="0.5" selected>0.5</option>
+                                {% else %}
+                                    <option value="0.5">0.5</option>
+                                {% endif %}
+
+                                {% if review.rating == 1.0 %}
+                                    <option value="1.0" selected>1.0</option>
+                                {% else %}
+                                    <option value="1.0">1.0</option>
+                                {% endif %}
+
+                                {% if review.rating == 1.5 %}
+                                    <option value="1.5" selected>1.5</option>
+                                {% else %}
+                                    <option value="1.5">1.5</option>
+                                {% endif %}
+
+                                {% if review.rating == 2.0 %}
+                                    <option value="2.0" selected>2.0</option>
+                                {% else %}
+                                    <option value="2.0">2.0</option>
+                                {% endif %}
+
+                                {% if review.rating == 2.5 %}
+                                    <option value="2.5" selected>2.5</option>
+                                {% else %}
+                                    <option value="2.5">2.5</option>
+                                {% endif %}
+
+                                {% if review.rating == 3.0 %}
+                                    <option value="3.0" selected>3.0</option>
+                                {% else %}
+                                    <option value="3.0">3.0</option>
+                                {% endif %}
+
+                                {% if review.rating == 3.5 %}
+                                    <option value="3.5" selected>3.5</option>
+                                {% else %}
+                                    <option value="3.5">3.5</option>
+                                {% endif %}
+
+                                {% if review.rating == 4.0 %}
+                                    <option value="4.0" selected>4.0</option>
+                                {% else %}
+                                    <option value="4.0">4.0</option>
+                                {% endif %}
+
+                                {% if review.rating == 4.5 %}
+                                    <option value="4.5" selected>4.5</option>
+                                {% else %}
+                                    <option value="4.5">4.5</option>
+                                {% endif %}
+
+                                {% if review.rating == 5.0 %}
+                                    <option value="5.0" selected>5.0</option>
+                                {% else %}
+                                    <option value="5.0">5.0</option>
+                                {% endif %}
+                            </select>
+                            <label for="content">Explain Why You Gave It That Score:</label>
+                            <textarea rows="4" cols="20" id="content" name="content" value= required>
+                                {{ review.content }}
+                            </textarea>
+                            <input type="hidden" id="route" name="route" value="{{route.id}}"> 
+                            <input type="submit">
+                        </form>
                     </div>
                 {% empty %}
                     <p>No reviews yet.</p>
