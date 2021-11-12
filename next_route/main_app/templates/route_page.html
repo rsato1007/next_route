@@ -1,7 +1,60 @@
 {% extends 'base.html' %}
-{% block title %} Next Route - ____ {% endblock %}
+{% block title %} Next Route - {{ route.name }} {% endblock %}
 {% block content %}
-    <div>
-        If you see this, this is the route page.
+    <div class="route-page-contianer">
+        <div class="route-information-container">
+            <div class="route-page-image-container">
+                {% if route.image %}
+                {% endif %}
+                <div>
+                    <h4>{{ route.name }}</h4>
+                    <p>Shared by {{ route.user.username }}</p>
+                </div>
+            </div>
+            <div class="route-details-section">
+                <div>Route Details:</div>
+                <div>
+                    <div>Location: {{ route.location }}</div>
+                    <div>difficulty: {{ route.difficulty }}</div>
+                    <div>Type of Climb: {{ route.climb_type }}</div>
+                    <div>Pitches: {{ route.pitch }}</div>
+                    {% if user.is_authenticated and user.pk == route.user.pk %}
+                        <div>Edit Route</div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="route-description-section">
+                <div>Description:</div>
+                <div>{{ route.description }}</div>
+            </div>
+        </div>
+        <div class="route-review-container">
+            <div>Route Reviews:</div>
+            <div>
+                <p>4 out of 5 Stars</p>
+                <div>Write a Review</div>
+            </div>
+            <div class="review-list-container">
+                {% for review in reviews %}
+                    <div class="individual-review">
+                        {% if review.user.image %}
+                            <p>Here's the image</p>
+                        {% endif %}
+                        <h5>{{ review.user.username }}</h5>
+                        <div>Rating</div>
+                        <div>Posted 1 Hour Ago</div>
+                        <div>{{ review.content }}</div>
+                        <div>
+                            {% if user.is_authenticated and review.user.username == user.username %}
+                                <p>Edit Review</p>
+                                <p>Delete Review</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% empty %}
+                    <p>No reviews yet.</p>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 {% endblock %}

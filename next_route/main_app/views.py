@@ -147,3 +147,15 @@ class CreateRoute(View):
         user = CustomUser.objects.get(pk=request.POST.get('user'))
         Route.objects.create(name=name, location=location, difficulty=difficulty, description=description, image=image, climb_type=climb_type, pitch=pitch, user=user)
         return redirect('route_search')
+
+class RoutePage(DetailView):
+    model = Route
+    template_name = 'route_page.html'
+
+    def get_context_data(self, **kwargs):
+        pk = self.kwargs.get('pk')
+        route = Route.objects.get(pk=pk)
+        context = super().get_context_data(**kwargs)
+        # This will be our template for when the user starts posting routes and reviews.
+        context["reviews"] = route.review.all().order_by('-posted_at')
+        return context

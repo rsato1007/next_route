@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %} ____'s Page {% endblock %}
+{% block title %} {{user_profile.username}}'s Profile Page {% endblock %}
 {% block content %}
     <!-- Profile Card -->
     <div>
@@ -24,10 +24,11 @@
         {% endfor %}
     </div>
     <div class="user_reviews no-show">
+        <!-- Look at having the backend send a number of objects being sent instead. -->
         {% for review in reviews %}
             <p>{{ forloop.counter }} Review(s) from {{ user_profile.username }}</p>
         {% empty %}
             <p> No reviews yet from {{ user_profile.username }}</p>
-    {% endfor %}
+        {% endfor %}
     </div>
 {% endblock %}

@@ -80,7 +80,7 @@
                             <p>0 Reviews</p>
                         {% endfor %}
                         <p>Located: {{ route.location }}</p>
-                        <a href="">View Route</a>
+                        <a href="{% url 'route_page' route.pk %}">View Route</a>
                         <div>
                             <p>Difficulty {{ route.difficulty }}</p>
                             <p>Pitches {{ route.pitch }}</p>
