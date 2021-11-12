@@ -132,6 +132,7 @@ class RouteSearch(ListView):
                 location__icontains=self.request.GET.get("location")
             )
 
+@method_decorator(login_required, name='dispatch')
 class CreateRoute(View):
 
     def get(self, request):
@@ -164,6 +165,7 @@ class RoutePage(DetailView):
         context["reviews"] = route.review.all().order_by('-posted_at')
         return context
 
+@method_decorator(login_required, name='dispatch')
 class RouteUpdate(UpdateView):
     model = Route
     fields = ['name', 'location','difficulty', 'description', 'image', 'climb_type', 'pitch']
@@ -172,23 +174,25 @@ class RouteUpdate(UpdateView):
         return reverse('route_page', kwargs={'pk': self.object.pk})
 
 # ALL REVIEW VIEWS
-
+@method_decorator(login_required, name='dispatch')
 class CreateReview(View):
-    def post(self, request):
-        user = CustomUser.objects.get(pk=request.POST.get('user'))
-        route = Route.objects.get(pk=request.POST.get('route'))
+    def post(self, request, pk):
+        user = CustomUser.objects.get(pk=request.user.pk)
+        route = Route.objects.get(pk=pk)
         rating = request.POST.get('rating')
         content = request.POST.get('content')
         Review.objects.create(user=user, route=route, rating=rating, content=content)
-        return redirect('route_page', pk=request.POST.get('route'))
+        return redirect('route_page', pk=pk)
 
+@method_decorator(login_required, name='dispatch')
 class ReviewUpdate(View):
-    def post(self, request, pk):
+    def post(self, request, pk, review_pk):
         rating = request.POST.get('rating')
         content = request.POST.get('content')
-        Review.objects.filter(pk=pk).update(rating=rating, content=content)
-        return redirect('route_page', pk=request.POST.get('route'))
+        Review.objects.filter(pk=review_pk).update(rating=rating, content=content)
+        return redirect('route_page', pk=pk)
 
+@method_decorator(login_required, name='dispatch')
 class ReviewDelete(View):
     def get(self, request, pk, review_pk):
         review = Review.objects.get(pk=review_pk)

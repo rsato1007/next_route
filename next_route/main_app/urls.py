@@ -10,8 +10,8 @@ urlpatterns = [
     # List of routes I need: create, edit, delete, view
     path('route/', views.RouteSearch.as_view(), name="route_search"),
     path('route/new/', views.CreateRoute.as_view(), name="create_route"),
-    path('route/<int:pk>', views.RoutePage.as_view(), name="route_page"),
-    path('route/<int:pk>/update', views.RouteUpdate.as_view(), name="route_update"),
+    path('route/<int:pk>/', views.RoutePage.as_view(), name="route_page"),
+    path('route/<int:pk>/update/', views.RouteUpdate.as_view(), name="route_update"),
 
     # user urls
     # List of users I need: profile page, create user, edit user, delete user (icebox)
@@ -20,8 +20,8 @@ urlpatterns = [
 
     # review urls
     # Add, edit, delete
-    path('review/new/', views.CreateReview.as_view(), name="create_review"),
-    path('review/<int:pk>/update/', views.ReviewUpdate.as_view(), name="review_update"),
+    path('route/<int:pk>/review/new/', views.CreateReview.as_view(), name="create_review"),
+    path('route/<int:pk>/review/<int:review_pk>/update/', views.ReviewUpdate.as_view(), name="review_update"),
     path('route/<int:pk>/review/<int:review_pk>/delete/', views.ReviewDelete.as_view(), name="review_delete")
 
     # like urls
