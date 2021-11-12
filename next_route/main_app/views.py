@@ -166,3 +166,12 @@ class RouteUpdate(UpdateView):
     template_name = "edit_route.html"
     def get_success_url(self):
         return reverse('route_page', kwargs={'pk': self.object.pk})
+
+class CreateReview(View):
+    def post(self, request):
+        user = CustomUser.objects.get(pk=request.POST.get('user'))
+        route = Route.objects.get(pk=request.POST.get('route'))
+        rating = request.POST.get('rating')
+        content = request.POST.get('content')
+        Review.objects.create(user=user, route=route, rating=rating, content=content)
+        return redirect('route_page', pk=request.POST.get('route'))

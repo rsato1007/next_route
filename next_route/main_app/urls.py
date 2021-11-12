@@ -16,10 +16,11 @@ urlpatterns = [
     # user urls
     # List of users I need: profile page, create user, edit user, delete user (icebox)
     path('accounts/signup/', views.Signup.as_view(), name='signup'),
-    path('profile/<int:pk>/', views.ProfilePage.as_view(), name="profile")
+    path('profile/<int:pk>/', views.ProfilePage.as_view(), name="profile"),
 
     # review urls
     # Add, edit, delete
+    path('review/new/', views.CreateReview.as_view(), name="create_review")
 
     # like urls
     # add, delete
