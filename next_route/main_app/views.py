@@ -159,3 +159,10 @@ class RoutePage(DetailView):
         # This will be our template for when the user starts posting routes and reviews.
         context["reviews"] = route.review.all().order_by('-posted_at')
         return context
+
+class RouteUpdate(UpdateView):
+    model = Route
+    fields = ['name', 'location','difficulty', 'description', 'image', 'climb_type', 'pitch']
+    template_name = "edit_route.html"
+    def get_success_url(self):
+        return reverse('route_page', kwargs={'pk': self.object.pk})

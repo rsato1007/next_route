@@ -19,7 +19,7 @@
                     <div>Type of Climb: {{ route.climb_type }}</div>
                     <div>Pitches: {{ route.pitch }}</div>
                     {% if user.is_authenticated and user.pk == route.user.pk %}
-                        <div>Edit Route</div>
+                        <a href="{% url 'route_update' route.pk %}"><div>Edit Route</div></a>
                     {% endif %}
                 </div>
             </div>

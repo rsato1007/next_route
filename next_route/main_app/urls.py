@@ -11,6 +11,7 @@ urlpatterns = [
     path('route/', views.RouteSearch.as_view(), name="route_search"),
     path('route/new/', views.CreateRoute.as_view(), name="create_route"),
     path('route/<int:pk>', views.RoutePage.as_view(), name="route_page"),
+    path('route/<int:pk>/update', views.RouteUpdate.as_view(), name="route_update"),
 
     # user urls
     # List of users I need: profile page, create user, edit user, delete user (icebox)
