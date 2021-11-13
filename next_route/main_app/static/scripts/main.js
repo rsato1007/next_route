@@ -5,7 +5,8 @@ const userRouteButtonEl = document.querySelector(".user_routes_button");
 const writeReviewButtonEl = document.querySelector(".write-review-button");
 const editReviewButtonEl = document.querySelector('.edit-review-button');
 const deleteReviewButtonEl = document.querySelector(".delete-review-button");
-const deleteReviwCancelButtonEl = document.querySelector(".delete-review-cancel-button");
+const deleteReviewCancelButtonEl = document.querySelector(".delete-review-cancel-button");
+const editReviewCancelButtonEl = document.querySelector(".edit-review-cancel-button");
 
 const showElement = (domEl) => {
     domEl.classList.add('show');
@@ -49,6 +50,14 @@ if (editReviewButtonEl) {
     })
 }
 
+if (editReviewCancelButtonEl) {
+    editReviewCancelButtonEl.addEventListener('click', (e) => {
+        e.preventDefault();
+        const editReviewFormEl = document.querySelector(".edit-review-form");
+        hideElement(editReviewFormEl);
+    })
+}
+
 if (deleteReviewButtonEl) {
     deleteReviewButtonEl.addEventListener('click', (e) => {
         e.preventDefault();
@@ -57,10 +66,9 @@ if (deleteReviewButtonEl) {
     })
 }
 
-if (deleteReviwCancelButtonEl) {
-    deleteReviwCancelButtonEl.addEventListener('click', (e) => {
+if (deleteReviewCancelButtonEl) {
+    deleteReviewCancelButtonEl.addEventListener('click', (e) => {
         e.preventDefault();
-        console.log("Testing")
         const deleteReviewFormEl = document.querySelector(".delete-review-form-container");
         hideElement(deleteReviewFormEl);
     })
