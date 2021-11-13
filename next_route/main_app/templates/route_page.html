@@ -145,26 +145,28 @@
             </div>
         </div>
     </div>
-    <div class="route-review-form-container no-show">
-        <form method="post" action="/route/{{ route.pk }}/review/new/">
-            {% csrf_token %}
-            <label for="rating">Rating:</label>
-            <select id="rating" name="rating" required>
-                <option value="0.5">0.5</option>
-                <option value="1.0">1.0</option>
-                <option value="1.5">1.5</option>
-                <option value="2.0">2.0</option>
-                <option value="2.5">2.5</option>
-                <option value="3.0">3.0</option>
-                <option value="3.5">3.5</option>
-                <option value="4.0">4.0</option>
-                <option value="4.5">4.5</option>
-                <option value="5.0">5.0</option>
-            </select>
-            <label for="content">Explain Why You Gave It That Score:</label>
-            <textarea rows="4" cols="20" id="content" name="content" required>
-            </textarea>
-            <input type="submit">
-        </form>
+    {% if user.is_authenticated and route.user.pk != user.pk %}
+        <div class="route-review-form-container no-show">
+            <form method="post" action="/route/{{ route.pk }}/review/new/">
+                {% csrf_token %}
+                <label for="rating">Rating:</label>
+                <select id="rating" name="rating" required>
+                    <option value="0.5">0.5</option>
+                    <option value="1.0">1.0</option>
+                    <option value="1.5">1.5</option>
+                    <option value="2.0">2.0</option>
+                    <option value="2.5">2.5</option>
+                    <option value="3.0">3.0</option>
+                    <option value="3.5">3.5</option>
+                    <option value="4.0">4.0</option>
+                    <option value="4.5">4.5</option>
+                    <option value="5.0">5.0</option>
+                </select>
+                <label for="content">Explain Why You Gave It That Score:</label>
+                <textarea rows="4" cols="20" id="content" name="content" required>
+                </textarea>
+                <input type="submit">
+            </form>
+        {% endif %}
     </div>
 {% endblock %}

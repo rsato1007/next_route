@@ -5,9 +5,17 @@
     <div>
         <div>profile image.</div>
         <div>{{ user_profile.username }}</div>
+        {% if user.is_authenticated and user.username == user_profile.username %}
+            <div class="edit_profile_button">Edit Profile</div>
+        {% endif %}
         <div>{{ user.date_joined }}</div>
     </div>
     <!-- These need to be altered on the buttons only, but this is okay for now. -->
+    <h4>
+        <p class="user_routes_header show">{{ routes.count }} Route(s)</p>
+        <p class="user_reviews_header no-show">{{ reviews.count }}  Review(s)</p>
+        from {{user_profile.username}}
+    </h4>
     <div>
         <div class="user_routes_button">
             Routes
@@ -18,17 +26,32 @@
     </div>
     <div class="user_routes show">
         {% for route in routes %}
-            <p>{{ forloop.counter }} Route(s) from {{ user_profile.username }}</p>
         {% empty %}
-            <p> No routes yet from {{ user_profile.username }}</p>
+            <p>No Routes Yet from {{ user_profile.username }}</p>
         {% endfor %}
     </div>
     <div class="user_reviews no-show">
         <!-- Look at having the backend send a number of objects being sent instead. -->
         {% for review in reviews %}
-            <p>{{ forloop.counter }} Review(s) from {{ user_profile.username }}</p>
         {% empty %}
-            <p> No reviews yet from {{ user_profile.username }}</p>
+            <p> No Reviews Yet from {{ user_profile.username }}</p>
         {% endfor %}
     </div>
+    {% if user.is_authenticated and user.username == user_profile.username %}
+        <div class="edit_profile_container no-show">
+            <form action="/accounts/{{ user_profile.pk }}/edit/" method="post">
+                {% csrf_token %}
+                <label for="location">Location</label>
+                <input type="text" name="location" id="location">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+                <!-- <label for="password">Re-Enter Password</label>
+                <input type="password" name="password_reenter" id="password_reenter"> -->
+                <label for="image">Profile Image</label>
+                <input type="file" name="image" id="image">
+                <div class="edit_profile_cancel_button">Cancel</div>
+                <input type="submit">
+            </form>
+        </div>
+    {% endif %}
 {% endblock %}

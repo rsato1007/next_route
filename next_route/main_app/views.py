@@ -4,8 +4,9 @@ from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView, ListView
 from .models import Route, CustomUser, Review, Like
-from .forms import MyUserCreationForm
+from .forms import MyUserCreationForm, UpdateProfile
 from django.contrib.auth import login
+from django.contrib.auth.hashers import make_password
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.core.exceptions import PermissionDenied
@@ -50,6 +51,31 @@ class ProfilePage(TemplateView):
         context["routes"] = user.route.all().order_by('-created_at')
         context["reviews"] = user.review.all().order_by('-posted_at')
         return context
+
+@method_decorator(login_required, name='dispatch')
+class EditProfile(View):
+    def post(self, request, pk):
+        user = CustomUser.objects.filter(pk=pk)
+        updatedUser = {}
+        # Verification in the event the user used invalid data:
+        if request.POST.get('location'):
+            updatedUser['location'] = request.POST.get('location')
+        else:
+            updatedUser['location'] = user[0].location
+        print(request.POST.get('password'))
+        if request.POST.get('password'):
+            updatedUser['password'] = make_password(request.POST.get('password'))
+            print("Password has been updated!")
+        else:
+            updatedUser['password'] = user[0].password
+            print("Password not updated!")
+        if request.POST.get('image'):
+            updatedUser['image'] = request.POST.get('image')
+        else:
+            updatedUser['image'] = user[0].image
+            
+        user.update(location = updatedUser['location'], password = updatedUser['password'], image = updatedUser['image'])
+        return redirect('profile', pk=pk)
 
 # @method_decorator(login_required, name='dispatch')
 # Add this to the create route view and review route.
@@ -118,19 +144,33 @@ class RouteSearch(ListView):
     # This code is temporary.
     def get_queryset(self):
         # This allows me to go to this page even if no query is being made.
-        if not self.request.GET:
-            print("ROUTE SEARCH")
-        else:
+        if self.request.GET:
             # Good Problem: We're providing two values and we only want a list returned with values in between those two.
             # Let's do Validations in here instead.
             min_difficulty = self.request.GET.get("min-difficulty")
             max_difficulty = self.request.GET.get('max-difficulty')
             q = difficulty_range(min_difficulty, max_difficulty)
-            return Route.objects.filter(
+            routes = Route.objects.filter(
                 difficulty__in=q,
                 pitch__range=(0, int(self.request.GET.get("max-pitches"))),
                 location__icontains=self.request.GET.get("location")
             )
+            route_count = routes.count()
+            return routes
+
+    # def get_context_data(self, **kwargs):
+    #     if self.request.GET:
+    #         min_difficulty = self.request.GET.get("min-difficulty")
+    #         max_difficulty = self.request.GET.get('max-difficulty')
+    #         q = difficulty_range(min_difficulty, max_difficulty)
+    #         routes = Route.objects.filter(
+    #             difficulty__in=q,
+    #             pitch__range=(0, int(self.request.GET.get("max-pitches"))),
+    #             location__icontains=self.request.GET.get("location")
+    #         )
+    #         context = super().get_context_data(**kwargs)
+    #         context["routes"] = routes
+            
 
 @method_decorator(login_required, name='dispatch')
 class CreateRoute(View):

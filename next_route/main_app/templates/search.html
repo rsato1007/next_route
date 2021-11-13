@@ -59,11 +59,11 @@
             <input type="submit">
         </div>
     </form>
+    <p>{{routes}}</p>
+    <p>{{route_count}}</p>
     <div>
         {% if route_list %}
-            {% for route in route_list %}
-                <h3>Results for {{ forloop.counter }} routes</h3>
-            {% endfor %}
+            <h3>Results for {{ route_list.count}} routes</h3>
         {% else %}
             <h3>No Routes Found</h3>
         {% endif %}

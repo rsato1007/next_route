@@ -13,3 +13,14 @@ class MyUserChangeForm(UserChangeForm):
     class Meta(UserChangeForm):
         model = CustomUser
         fields = ('username', 'location', 'is_admin', 'is_banned')
+
+class UpdateProfile(forms.ModelForm):
+    username = forms.CharField(required=True)
+    email = forms.CharField(required=True)
+    password = forms.CharField(required=True)
+    location = forms.CharField(required=True)
+    image = forms.FileField(required=False)
+
+    class Meta:
+        model = CustomUser
+        fields = ("username", "email", "password", "location", "image")

@@ -7,6 +7,8 @@ const editReviewButtonEl = document.querySelector('.edit-review-button');
 const deleteReviewButtonEl = document.querySelector(".delete-review-button");
 const deleteReviewCancelButtonEl = document.querySelector(".delete-review-cancel-button");
 const editReviewCancelButtonEl = document.querySelector(".edit-review-cancel-button");
+const editProfileButtonEl = document.querySelector(".edit_profile_button");
+const editProfileCancelButtonEl = document.querySelector(".edit_profile_cancel_button");
 
 const showElement = (domEl) => {
     domEl.classList.add('show');
@@ -23,6 +25,8 @@ if (userRouteButtonEl) {
         e.preventDefault();
         hideElement(userReviewEl);
         showElement(userRouteEl);
+        hideElement(document.querySelector(".user_reviews_header"));
+        showElement(document.querySelector(".user_routes_header"));
     });
 }
 
@@ -31,6 +35,8 @@ if (userReviewButtonEl) {
         e.preventDefault();
         hideElement(userRouteEl);
         showElement(userReviewEl);
+        hideElement(document.querySelector(".user_routes_header"));
+        showElement(document.querySelector(".user_reviews_header"));
     });
 }
 
@@ -71,5 +77,19 @@ if (deleteReviewCancelButtonEl) {
         e.preventDefault();
         const deleteReviewFormEl = document.querySelector(".delete-review-form-container");
         hideElement(deleteReviewFormEl);
+    })
+}
+
+if (editProfileButtonEl) {
+    editProfileButtonEl.addEventListener('click', (e) => {
+        e.preventDefault();
+        showElement(document.querySelector(".edit_profile_container"));
+    })
+}
+
+if(editProfileCancelButtonEl) {
+    editProfileCancelButtonEl.addEventListener('click', (e) => {
+        e.preventDefault();
+        hideElement(document.querySelector(".edit_profile_container"));
     })
 }
