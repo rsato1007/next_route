@@ -9,6 +9,7 @@ const deleteReviewCancelButtonEl = document.querySelector(".delete-review-cancel
 const editReviewCancelButtonEl = document.querySelector(".edit-review-cancel-button");
 const editProfileButtonEl = document.querySelector(".edit_profile_button");
 const editProfileCancelButtonEl = document.querySelector(".edit_profile_cancel_button");
+const passwordInputEl = document.querySelector(".password-required");
 
 const showElement = (domEl) => {
     domEl.classList.add('show');
@@ -18,6 +19,24 @@ const showElement = (domEl) => {
 const hideElement = (domEl) => {
     domEl.classList.remove('show');
     domEl.classList.add("no-show");
+}
+
+const passWordValidation = (field1, field2) => {
+    if (field1.value !== '') {
+        field1.setAttribute('required', '');
+        field2.setAttribute('required', '')
+        if (field1.value !== field2.value) {
+            const passwordMessageEl = document.querySelector(".password-message");
+            showElement(passwordMessageEl);
+        }
+        else {
+            const passwordMessageEl = document.querySelector(".password-message");
+            hideElement(passwordMessageEl);
+        }
+    } else {
+        field1.removeAttribute('required');
+        field2.removeAttribute('required')
+    }
 }
 
 if (userRouteButtonEl) {
@@ -91,5 +110,17 @@ if(editProfileCancelButtonEl) {
     editProfileCancelButtonEl.addEventListener('click', (e) => {
         e.preventDefault();
         hideElement(document.querySelector(".edit_profile_container"));
+    })
+}
+
+if (passwordInputEl) {
+    const passwordInputEl2 = document.getElementById("password_reenter");
+    passwordInputEl.addEventListener('input', (e) => {
+        e.preventDefault();
+        passWordValidation(passwordInputEl, passwordInputEl2);
+    })
+    passwordInputEl2.addEventListener('input', (e) => {
+        e.preventDefault();
+        passWordValidation(passwordInputEl2, passwordInputEl);
     })
 }

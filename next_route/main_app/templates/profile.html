@@ -44,9 +44,10 @@
                 <label for="location">Location</label>
                 <input type="text" name="location" id="location">
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password">
-                <!-- <label for="password">Re-Enter Password</label>
-                <input type="password" name="password_reenter" id="password_reenter"> -->
+                <input type="password" name="password" id="password" class="password-required">
+                <label for="password">Re-Enter Password</label>
+                <input type="password" name="password_reenter" id="password_reenter">
+                <p class="password-message no-show">Passwords must be matching</p>
                 <label for="image">Profile Image</label>
                 <input type="file" name="image" id="image">
                 <div class="edit_profile_cancel_button">Cancel</div>

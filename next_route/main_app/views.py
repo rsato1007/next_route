@@ -62,18 +62,15 @@ class EditProfile(View):
             updatedUser['location'] = request.POST.get('location')
         else:
             updatedUser['location'] = user[0].location
-        print(request.POST.get('password'))
         if request.POST.get('password'):
             updatedUser['password'] = make_password(request.POST.get('password'))
-            print("Password has been updated!")
         else:
             updatedUser['password'] = user[0].password
-            print("Password not updated!")
         if request.POST.get('image'):
             updatedUser['image'] = request.POST.get('image')
         else:
             updatedUser['image'] = user[0].image
-            
+
         user.update(location = updatedUser['location'], password = updatedUser['password'], image = updatedUser['image'])
         return redirect('profile', pk=pk)
 
