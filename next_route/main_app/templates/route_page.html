@@ -10,21 +10,23 @@
                     <p class="route-page-route-username">Shared by {{ route.user.username }}</p>
                 </div>
             </div>
-            <div class="route-details-section">
-                <div>Route Details:</div>
-                <div>
-                    <div>Location: {{ route.location }}</div>
-                    <div>difficulty: {{ route.difficulty }}</div>
-                    <div>Type of Climb: {{ route.climb_type }}</div>
-                    <div>Pitches: {{ route.pitch }}</div>
-                    {% if user.is_authenticated and user.pk == route.user.pk %}
-                        <a href="{% url 'route_update' route.pk %}"><div>Edit Route</div></a>
-                    {% endif %}
+            <div class="route-details-description-container">
+                <div class="route-details-section">
+                    <div class="route-details-description-header">Route Details:</div>
+                    <div class="route-details-text-container">
+                        <div class="route-details-text">Location: <b>{{ route.location }}</b></div>
+                        <div class="route-details-text">difficulty: <b>{{ route.difficulty }}</b></div>
+                        <div class="route-details-text">Type of Climb: <b>{{ route.climb_type }}</b></div>
+                        <div class="route-details-text">Pitches: <b>{{ route.pitch }}</b></div>
+                        {% if user.is_authenticated and user.pk == route.user.pk %}
+                            <a href="{% url 'route_update' route.pk %}" class="edit-route-button-link"><div class="route-details-text edit-route-button">Edit Route</div></a>
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
-            <div class="route-description-section">
-                <div>Description:</div>
-                <div>{{ route.description }}</div>
+                <div class="route-description-section">
+                    <div class="route-details-description-header">Description:</div>
+                    <div>{{ route.description }}</div>
+                </div>
             </div>
         </div>
         <div class="route-review-container">

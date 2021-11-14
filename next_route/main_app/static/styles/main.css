@@ -14,6 +14,7 @@
     --page-main-color: #2E8B57;
     --page-main-color-darker: #246e44;
     --main-button-color: #118DDA;
+    --main-button-color-darker: #0f77b8;
     --cancel-button-color: #A8A8A8;
     --red-button-color: #FF0000;
 }
@@ -224,6 +225,7 @@
 
 .route-page-image-container {
     position: relative;
+    margin-bottom: -4px;
 }
 
 .route-page-image {
@@ -238,6 +240,7 @@
     z-index: 2;
     bottom: clamp(30px, 3vw, 50px);
     left: clamp(15px, 4.5vw, 50px);
+    animation: appear 1.5s linear 1;
 }
 
 .route-page-route-name {
@@ -252,5 +255,55 @@
     font-size: clamp(10px, 2vw, 20px);
     font-family: var(--font-maven);
     letter-spacing: 3px;
+}
+
+.route-details-description-container {
+    display: grid;
+    grid-template-columns: 35% 65%;
+}
+
+.route-details-section {
+    border-right: 1px solid var(--page-main-color);
+}
+
+.route-details-description-header {
+    padding: 15px 0 15px 20px;
+    font-family: var(--font-merriweather);
+    font-weight: bold;
+    font-size: clamp(15px, 3vw, 20px);
+    background-color: var(--page-main-color);
+    color: var(--page-bg)
+}
+
+.route-details-text-container {
+    padding-left: 20px;
+    padding-right: 10px;
+    font-size: clamp(10px, 5vw, 17px);
+    font-family: var(--font-maven);
+}
+
+.route-details-text {
+    margin-top: 13px;
+}
+
+.edit-route-button-link {
+    text-decoration: none;
+}
+
+.edit-route-button {
+    background-color: var(--main-button-color);
+    color: var(--page-bg);
+    font-family: var(--font-maven);
+    height: 30px;
+    width: 120px;
+    font-size: clamp(10px, 5vw, 15px);
+    line-height: 30px;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.edit-route-button:hover {
+    background-color: var(--main-button-color-darker);
 }
 /* ROUTE PAGE STYLING END */
