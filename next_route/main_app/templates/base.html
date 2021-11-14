@@ -11,10 +11,12 @@
 </head>
 <body>
     <nav class="navbar-container">
-        <div class="navbar-logo-container">
-            <P class="NextRoute-Logo-Text">NextRoute</P>
-            <img src="{% static 'images/logo.png' %}" alt="" class="navbar-logo-image">
-        </div>
+        <a href="{% url 'splash_page' %}" class="navbar-logo-link">
+            <div class="navbar-logo-container">
+                <P class="NextRoute-Logo-Text">NextRoute</P>
+                <img src="{% static 'images/logo.png' %}" alt="" class="navbar-logo-image">
+            </div>
+        </a>
         <div class="navbar-links-container">
             <a href="{% url 'route_search' %}" class="navbar-link">
                 <div class="find-routes-button navbar-button green-button">Find Routes</div>
