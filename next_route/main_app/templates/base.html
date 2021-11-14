@@ -13,34 +13,35 @@
     <nav class="navbar-container">
         <div class="navbar-logo-container">
             <P class="NextRoute-Logo-Text">NextRoute</P>
+            <img src="{% static 'images/logo.png' %}" alt="" class="navbar-logo-image">
         </div>
         <div class="navbar-links-container">
-            <a href="{% url 'route_search' %}">
-                <div class="find-routes-button navbar-button">Find Routes</div>
+            <a href="{% url 'route_search' %}" class="navbar-link">
+                <div class="find-routes-button navbar-button green-button">Find Routes</div>
             </a>
             {% if user.is_authenticated %}
-                <a href="{% url 'logout' %}">
-                    <div class="navbar-button">Logout</div>
+                <a href="{% url 'logout' %}" class="navbar-link">
+                    <div class="navbar-button white-button">Logout</div>
                 </a>
-                <a href="{% url 'profile' user.pk %}">
-                    <div class="navbar-button">Profile</div>
+                <a href="{% url 'profile' user.pk %}" class="navbar-link">
+                    <div class="navbar-button green-button">Profile</div>
                 </a>
             {% else %}
-                <a href="{% url 'login' %}">
-                    <div class="navbar-button">Login</div>
+                <a href="{% url 'login' %}" class="navbar-link">
+                    <div class="navbar-button white-button">Login</div>
                 </a>
-                <a href="{% url 'signup' %}">
-                    <div class="navbar-button">Signup</div>
+                <a href="{% url 'signup' %}" class="navbar-link">
+                    <div class="navbar-button green-button">Signup</div>
                 </a>
             {% endif %}
         </div>
     </nav>
     {% block content %}
     {% endblock %}
-    <footer>
-        <p>NextRoute</p>
-        <hr>
-        <p>© 2021 Designs by Robert Sato</p>
+    <footer class="footer-container">
+        <p class="footer-app-name">NextRoute</p>
+        <hr class="footer-line">
+        <p class="footer-trademark-text">© 2021 Designs by Robert Sato</p>
     </footer>
 </body>
 </html>

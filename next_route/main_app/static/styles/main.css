@@ -16,12 +16,9 @@
     --red-button-color: #FF0000;
 }
 /* UNIVERSAL STYLING START */
-    * {
-        background-color: var(--page-bg);
-    }
-
     body {
         margin: 0;
+        background-color: var(--page-bg);
     }
 
     .show {
@@ -34,11 +31,15 @@
 
     /* NAVBAR STYLING START */
     .navbar-container {
-        padding: 0 25px 0 25px;
+        padding: 15px 25px 15px 25px;
         display: grid;
         grid-template-columns: 33% 67%;
         width: auto;
         border-bottom: 1px solid black;
+    }
+
+    .navbar-link {
+        text-decoration: none;
     }
 
     .navbar-links-container {
@@ -48,22 +49,96 @@
         align-items: center;
     }
 
+    .navbar-logo-container {
+        display: inline-flex;
+    }
+
     .NextRoute-Logo-Text {
         color: var(--page-main-color);
         font-family: var(--font-maven);
         font-weight: bold;
-        font-size: clamp(14px, 2.5vw, 25px);
+        font-size: clamp(16px, 2.5vw, 20px);
+        margin: 0;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        height: 100%;
+    }
+
+    .navbar-logo-image {
+        height: 75px;
+        width: auto;
+        position: absolute;
+        top: -6px;
+        left: 128px;
     }
     
     .navbar-button {
         text-align: center;
-        border: black 2px 2px;
-        margin-left: 40px;
-        font-size: clamp(14px, 2.2vw, 25px);
+        border: 3px solid black;
+        margin-left: 35px;
+        height: 40px;
+        width: clamp(112px, 17.6vw, 144px);
+        font-size: clamp(14px, 2.2vw, 18px);
+        line-height: 40px;
+        border-radius: 10px;
+        font-family: var(--font-maven);
+        font-weight: bold;
+    }
+
+    .green-button {
+        background-color: var(--page-main-color);
+        color: var(--page-bg);
+        border-color: var(--page-main-color);
+    }
+
+    .white-button {
+        background-color: var(--page-bg);
+        color: var(--page-main-color);
+        border-color: var(--page-main-color);
+    }
+
+    @media only screen and (max-width: 800px) {
+        .navbar-logo-image {
+            height: 9.5vw;
+            width: auto;
+            position: absolute;
+            left: 16.3vw;
+            top: -7px;
+        }
     }
     /* NAVBAR STYLING END */
 
     /* FOOTER STYLING START */
+    .footer-container {
+        background-color: black;
+        color: var(--page-bg);
+        text-align: center;
+        font-family: var(--font-merriweather);
+        font-size: 13px;
+    }
+
+    .footer-line {
+        width: 90%;
+    }
+
+    .footer-app-name {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        margin: 0;
+        height: 100%;
+        padding-top: 18px;
+    }
+
+    .footer-trademark-text {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        margin: 0;
+        height: 100%;
+        padding-bottom: 18px;
+    }
     /* FOOTER STYLING END */
 
     /* POPUP FORM STYLING START */
