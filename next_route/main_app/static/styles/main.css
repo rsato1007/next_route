@@ -1,7 +1,89 @@
-.show {
-    display: block;
-}
+/* UNIVERSAL VARIABLES START */
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;700;900&family=Merriweather:wght@300;400;700&family=Overpass:wght@300;400;700&display=swap');
 
-.no-show {
-    display: none;
+/* UNIVERSAL VARIABLES END */
+:root {
+    /* Main Fonts */
+    --font-maven: 'Maven Pro', sans-serif;
+    --font-merriweather: 'Merriweather', serif;
+    --font-overpass: 'Overpass', sans-serif;
+
+    /* Main Colors */
+    --page-bg: #F9F9F9;
+    --page-main-color: #2E8B57;
+    --main-button-color: #118DDA;
+    --cancel-button-color: #A8A8A8;
+    --red-button-color: #FF0000;
 }
+/* UNIVERSAL STYLING START */
+    * {
+        background-color: var(--page-bg);
+    }
+
+    body {
+        margin: 0;
+    }
+
+    .show {
+        display: block;
+    }
+    
+    .no-show {
+        display: none;
+    }
+
+    /* NAVBAR STYLING START */
+    .navbar-container {
+        padding: 0 25px 0 25px;
+        display: grid;
+        grid-template-columns: 33% 67%;
+        width: auto;
+        border-bottom: 1px solid black;
+    }
+
+    .navbar-links-container {
+        float: right;
+        display: inline-flex;
+        justify-content: end;
+        align-items: center;
+    }
+
+    .NextRoute-Logo-Text {
+        color: var(--page-main-color);
+        font-family: var(--font-maven);
+        font-weight: bold;
+        font-size: clamp(14px, 2.5vw, 25px);
+    }
+    
+    .navbar-button {
+        text-align: center;
+        border: black 2px 2px;
+        margin-left: 40px;
+        font-size: clamp(14px, 2.2vw, 25px);
+    }
+    /* NAVBAR STYLING END */
+
+    /* FOOTER STYLING START */
+    /* FOOTER STYLING END */
+
+    /* POPUP FORM STYLING START */
+    /* POPUP FORM STYLING END */
+/* UNIVERSAL STYLING END */
+
+/* SPLASH PAGE STYLING START */
+/* SPLASH PAGE STYLING END */
+
+/* PROFILE PAGE STYLING START */
+/* PROFILE PAGE STYLING END */
+
+/* SEARCH PAGE STYLING START */
+/* SEARCH PAGE STYLING END */
+
+/* EDIT ROUTE PAGE STYLING START */
+/* EDIT ROUTE PAGE STYLING END */
+
+/* CREATE ROUTE PAGE STYLING START */
+/* CREATE ROUTE PAGE STYLING END */
+
+/* ROUTE PAGE STYLING START */
+/* ROUTE PAGE STYLING END */
