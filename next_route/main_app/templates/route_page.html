@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
 {% block title %} Next Route - {{ route.name }} {% endblock %}
 {% block content %}
-    <div class="route-page-contianer">
+    <div class="route-page-container">
         <div class="route-information-container">
             <div class="route-page-image-container">
-                {% if route.image %}
-                {% endif %}
-                <div>
-                    <h4>{{ route.name }}</h4>
-                    <p>Shared by {{ route.user.username }}</p>
+                <img src="https://www.rei.com/dam/rinckenberger_111815_1406_main_lg.jpg" alt="" class="route-page-image">
+                <div class="route-page-image-header">
+                    <h4 class="route-page-route-name">{{ route.name }}</h4>
+                    <p class="route-page-route-username">Shared by {{ route.user.username }}</p>
                 </div>
             </div>
             <div class="route-details-section">

@@ -216,4 +216,41 @@
 /* CREATE ROUTE PAGE STYLING END */
 
 /* ROUTE PAGE STYLING START */
+.route-page-container {
+    width: clamp(20px, 80%, 1200px);
+    margin: 80px auto;
+    border: 1px solid rgb(148, 148, 148);
+}
+
+.route-page-image-container {
+    position: relative;
+}
+
+.route-page-image {
+    width: 100%;
+    height: auto;
+}
+
+.route-page-image-header {
+    color: var(--page-bg);
+    position: absolute;
+    display: inline-block;
+    z-index: 2;
+    bottom: clamp(30px, 3vw, 50px);
+    left: clamp(15px, 4.5vw, 50px);
+}
+
+.route-page-route-name {
+    margin: 0;
+    font-size: clamp(25px, 3vw, 35px);
+    font-family: var(--font-merriweather);
+    letter-spacing: 4px;
+}
+
+.route-page-route-username {
+    margin: 0;
+    font-size: clamp(10px, 2vw, 20px);
+    font-family: var(--font-maven);
+    letter-spacing: 3px;
+}
 /* ROUTE PAGE STYLING END */
