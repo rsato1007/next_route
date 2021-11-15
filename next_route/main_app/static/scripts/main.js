@@ -3,6 +3,7 @@ let userReviewEl = document.querySelector(".user_reviews");
 const userReviewButtonEl = document.querySelector(".user_reviews_button");
 const userRouteButtonEl = document.querySelector(".user_routes_button");
 const writeReviewButtonEl = document.querySelector(".write-review-button");
+const writeReviewCancelButtonEl = document.querySelector(".write_review_cancel_button");
 const editReviewButtonEl = document.querySelector('.edit-review-button');
 const deleteReviewButtonEl = document.querySelector(".delete-review-button");
 const deleteReviewCancelButtonEl = document.querySelector(".delete-review-cancel-button");
@@ -78,6 +79,14 @@ if (writeReviewButtonEl) {
         e.preventDefault();
         const routeReviewContainEL = document.querySelector(".route-review-form-container");
         showElement(routeReviewContainEL);
+    });
+}
+
+if(writeReviewCancelButtonEl) {
+    writeReviewCancelButtonEl.addEventListener("click", (e) => {
+        e.preventDefault();
+        const routeReviewContainEL = document.querySelector(".route-review-form-container");
+        hideElement(routeReviewContainEL);
     });
 }
 
