@@ -213,12 +213,27 @@ class RoutePage(DetailView):
         return context
 
 @method_decorator(login_required, name='dispatch')
-class RouteUpdate(UpdateView):
-    model = Route
-    fields = ['name', 'location','difficulty', 'description', 'image', 'climb_type', 'pitch']
-    template_name = "edit_route.html"
-    def get_success_url(self):
-        return reverse('route_page', kwargs={'pk': self.object.pk})
+class RouteUpdate(View):
+    # model = Route
+    # fields = ['name', 'location','difficulty', 'description', 'image', 'climb_type', 'pitch']
+    # template_name = "edit_route.html"
+    # def get_success_url(self):
+    #     return reverse('route_page', kwargs={'pk': self.object.pk})
+    
+    def get(self, request, pk):
+        context = { "route": Route.objects.get(pk=pk), "range": range(11), "difficulty": difficulty_range("5.0", "5.15") }
+        return render(request, "edit_route.html", context)
+
+    def post(self, request, pk):
+        name = request.POST.get('name')
+        location = request.POST.get('location')
+        difficulty = request.POST.get('difficulty')
+        description = request.POST.get('description')
+        image = request.POST.get('image')
+        climb_type = request.POST.get('climb_type')
+        pitch = request.POST.get('pitch')
+        Route.objects.filter(pk=pk).update(name=name, location=location, difficulty=difficulty, description=description, image=image, climb_type=climb_type, pitch=pitch)
+        return redirect('route_page', pk=pk)
 
 # ALL REVIEW VIEWS
 @method_decorator(login_required, name='dispatch')

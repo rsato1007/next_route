@@ -1,7 +1,81 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %} Next Route - Modify Route {% endblock %}
 {% block content %}
-    <form action="" method="post">
-        {% csrf_token %} {{form.as_p}} <input type="submit" value="Submit" />
-  </form>
+<img src="{% static 'images/route-page.jpg' route.pk %}" alt="" class="page-background-image">
+    <div class="form-popup route-form route-form-first-half">
+        <div class="form-header">Edit Route</div>
+        <form method="post" url="/route/{{route.pk}}/update/" class="form">
+            {% csrf_token %}
+            <label for="name" class="form-label">Route Name:</label>
+            <br>
+            <input type="text" id="name" name="name" class="form-input" value='{{ route.name }}'>
+            <br>
+            <label for="location" class="form-label">Location:</label>
+            <br>
+            <input type="text" id="location" name="location" class="form-input" value="{{ route.location }}">
+            <br>
+            <label for="difficulty" class="form-label">What's the difficulty?</label>
+            <br>
+            <select id="difficulty" name="difficulty" class="form-input">
+              {% for num in difficulty %}
+                {% if num == route.difficulty %}
+                  <option value="{{ num }}" selected>{{ num }}</option>
+                {% else %}
+                  <option value="{{ num }}" selected>{{ num }}</option>
+                {% endif %}
+              {% endfor %}
+            </select>
+            <br>
+            <div class="continue-button">Continue</div>
+    </div>
+            <div class="form-popup second-form-half no-show">
+                <div class="form-header form-header-second-form">Edit Route</div>
+                <div class="form form-part-2">
+                    <label for="pitch" class="form-label">Number of Pitches</label>
+                    <br>
+                    <select id="pitch" name="pitch" class="form-input">
+                      {% for i in range %}
+                        {% if i == route.pitch and i >= 10 %}
+                          <option value="{{ i }}" selected>{{ i }}+</option>
+                        {% elif i == route.pitch %}
+                          <option value="{{ i }}" selected>{{ i }}</option>
+                        {% elif i == 10 %}
+                          <option value="{{ i }}">{{ i }}+</option>
+                        {% else %}
+                          <option value="{{ i }}">{{ i }}</option>
+                        {% endif %}
+                      {% endfor %}
+                    </select>
+                    <br>
+                    <label for="climb_type" class="form-label">Climb Type</label>
+                    <br>
+                    <select name="climb_type" id="climb_type" class="form-input">
+                      {% with "Ice Rock Mixed" as list %}
+                        {% for type in list.split %}
+                          {% if type == route.climb_type %}
+                            <option value="{{ type }}" selected>{{ type }}</option>
+                          {% else %}
+                            <option value="{{ type }}">{{ type }}</option>
+                          {% endif %}
+                        {% endfor %}
+                      {% endwith %}
+                    </select>
+                    <br>
+                    <label for="description" class="form-label">Briefly Describe Route</label>
+                    <br>
+                    <textarea class="form-input" rows="4" cols="20" id="description" name="description" required>{{ route.description }}</textarea>
+                    <br>
+                    <label for="image" class="form-label">Upload Image:</label>
+                    <br>
+                    <input class="form-input" type="file" id="image" name="image">
+                    <br>
+                    <div class="form-buttons-container">
+                        <div class="cancel-button route-go-back">Go Back</div>
+                        <input type="submit" class="submit-button">
+                    </div>
+                </div>
+            </div>
+        </form>
+</img>
 {% endblock %}
