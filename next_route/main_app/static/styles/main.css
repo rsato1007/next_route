@@ -176,7 +176,7 @@
     .form-popup {
         margin: 0 auto;
         background-color: var(--page-bg);
-        width: 40%;
+        width: clamp(350px, 40%, 400px);
         position: fixed;
         top: 50%;
         left: 50%;
@@ -338,6 +338,37 @@
     }
     /* POPUP FORM STYLING END */
 /* UNIVERSAL STYLING END */
+
+/* LOGIN PAGE STYLING START */
+.login-page-image {
+    height: 82.1vh;
+    width: 100vw;
+    object-fit: cover;
+    overflow: hidden;
+    filter: brightness(60%);
+}
+
+.login-form {
+    height: 38%;
+}
+
+.login-button {
+    margin-top: 10px;
+    font-family: var(--font-maven);
+    font-size: clamp(16px, 4vw, 20px);
+    font-weight: bold;
+    height: 35px;
+    width: 120px;
+    border-radius: 5px;
+    background-color: var(--main-button-color);
+    border: none;
+    color: var(--page-bg);
+}
+
+.login-button:hover {
+    background-color: var(--main-button-color-darker);
+}
+/* LOGIN PAGE STYLING END */
 
 /* SPLASH PAGE STYLING START */
 .about-section-container {
