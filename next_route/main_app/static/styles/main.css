@@ -547,6 +547,11 @@
     text-align: right;
     float: right;
 }
+
+.user_reviews {
+    grid-area: 1 / 2 / 1 / 2;
+    margin-top: 75px;
+}
 /* PROFILE PAGE STYLING END */
 
 /* SEARCH PAGE STYLING START */

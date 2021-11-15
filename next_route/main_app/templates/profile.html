@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %} {{user_profile.username}}'s Profile Page {% endblock %}
 {% block content %}
     <div class="profile-page-container">
@@ -39,13 +40,135 @@
                 <p>No Routes Yet from {{ user_profile.username }}</p>
             {% endfor %}
         </div>
+        <!-- USER REVIEW SECTION -->
         <div class="user_reviews no-show">
-            <!-- Look at having the backend send a number of objects being sent instead. -->
             {% for review in reviews %}
+                <div class="individual-review">
+                    <div class="review-top-section">
+                        {% if review.user.image %}
+                            <img src="https://cultivatedculture.com/wp-content/uploads/2019/12/LinkedIn-Profile-Picture-Example-Madeline-Mann.jpeg" alt="" class="review-user-image">
+                        {% else %}
+                            <img src="{% static 'images/blank-profile-pic.jpg' %}" alt="" class="review-user-image">
+                        {% endif %}
+                        <div class="review-top-section-information">
+                            <h5 class="review-username">{{ review.route.name }}</h5>
+                            <div class="review-top-section-rating-posted">
+                                <div>{{ review.rating }}/5</div>
+                                <div class="review-posted-time">Posted 1 Hour Ago</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-content">{{ review.content }}</div>
+                    <div class="review-button-options">
+                        {% if user.is_authenticated and review.user.username == user.username %}
+                            <p class="edit-review-button">Edit Review</p>
+                            <p class="delete-review-button">Delete Review</p>
+                        {% endif %}
+                    </div>
+                </div>
+                <!-- EDIT REVIEW FORM -->
+                {% if user.is_authenticated and review.user.username == user.username %}
+                <div class="edit-review-form no-show form-popup-container">
+                    <div class="form-popup update-review-form">
+                        <div class="form-header">Edit Review</div>
+                        <form method="post" action="/route/{{ review.route.pk }}/review/{{ review.pk }}/update/" class="form">
+                            {% csrf_token %}
+                            <label for="rating" class="form-label">Rating:</label>
+                            <br>
+                            <select id="rating" name="rating" class="form-input" required>
+                                {% if review.rating == 0.5 %}
+                                    <option value="0.5" selected>0.5</option>
+                                {% else %}
+                                    <option value="0.5">0.5</option>
+                                {% endif %}
+
+                                {% if review.rating == 1.0 %}
+                                    <option value="1.0" selected>1.0</option>
+                                {% else %}
+                                    <option value="1.0">1.0</option>
+                                {% endif %}
+
+                                {% if review.rating == 1.5 %}
+                                    <option value="1.5" selected>1.5</option>
+                                {% else %}
+                                    <option value="1.5">1.5</option>
+                                {% endif %}
+
+                                {% if review.rating == 2.0 %}
+                                    <option value="2.0" selected>2.0</option>
+                                {% else %}
+                                    <option value="2.0">2.0</option>
+                                {% endif %}
+
+                                {% if review.rating == 2.5 %}
+                                    <option value="2.5" selected>2.5</option>
+                                {% else %}
+                                    <option value="2.5">2.5</option>
+                                {% endif %}
+
+                                {% if review.rating == 3.0 %}
+                                    <option value="3.0" selected>3.0</option>
+                                {% else %}
+                                    <option value="3.0">3.0</option>
+                                {% endif %}
+
+                                {% if review.rating == 3.5 %}
+                                    <option value="3.5" selected>3.5</option>
+                                {% else %}
+                                    <option value="3.5">3.5</option>
+                                {% endif %}
+
+                                {% if review.rating == 4.0 %}
+                                    <option value="4.0" selected>4.0</option>
+                                {% else %}
+                                    <option value="4.0">4.0</option>
+                                {% endif %}
+
+                                {% if review.rating == 4.5 %}
+                                    <option value="4.5" selected>4.5</option>
+                                {% else %}
+                                    <option value="4.5">4.5</option>
+                                {% endif %}
+
+                                {% if review.rating == 5.0 %}
+                                    <option value="5.0" selected>5.0</option>
+                                {% else %}
+                                    <option value="5.0">5.0</option>
+                                {% endif %}
+                            </select>
+                            <br>
+                            <label for="content"  class="form-label">Explain Why You Gave It That Score:</label>
+                            <br>
+                            <textarea rows="4" cols="20" id="content" name="content" class="form-input" required>{{ review.content }}</textarea>
+                            <br>
+                            <div class="form-buttons-container">
+                                <div class="edit-review-cancel-button cancel-button">Cancel</div>
+                                <input type="submit" class="submit-button">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            {% endif %}
+            <!-- DELETE REVIEW FORM -->
+            {% if user.is_authenticated and review.user.username == user.username %}
+                <div class="delete-review-form-container no-show form-popup-container">
+                    <div class="form-popup delete-review-form">
+                        <div class="delete-form-red-circle">!</div>
+                        <p class="delete-review-header">Delete Review?</p>
+                        <p class="delete-review-text">This can't be undone</p>
+                        <div class="form-buttons-container delete-button-container">
+                            <div class="delete-review-cancel-button cancel-delete-review-button">Cancel</div>
+                            <a href="/route/{{ review.route.pk }}/review/{{ review.pk }}/delete/"><div class="submit-review-delete-button">Delete</div></a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
             {% empty %}
                 <p> No Reviews Yet from {{ user_profile.username }}</p>
             {% endfor %}
+            <hr class="review-line-break">
         </div>
+        
     </div>
     {% if user.is_authenticated and user.username == user_profile.username %}
         <div class="edit_profile_container no-show form-popup-container">
