@@ -147,3 +147,19 @@ if (passwordInputEl) {
         passWordValidation(passwordInputEl2, passwordInputEl);
     })
 }
+
+if (document.querySelector(".continue-button")) {
+    document.querySelector(".continue-button").addEventListener('click', (e) => {
+        e.preventDefault();
+        hideElement(document.querySelector(".route-form-first-half"));
+        showElement(document.querySelector(".second-form-half"));
+    })
+}
+
+if (document.querySelector(".route-go-back")) {
+    document.querySelector(".route-go-back").addEventListener('click', (e) => {
+        e.preventDefault();
+        hideElement(document.querySelector(".second-form-half"));
+        showElement(document.querySelector(".route-form-first-half"));
+    })
+}

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %} 
 {% block content %}
-<img class="login-page-image" src="{% static 'images/login-page.jpg' %}">
+<img class="page-background-image" src="{% static 'images/login-page.jpg' %}">
   <div class="form-popup login-form">
     <div class="form-header">Login</div>
     <form method="post" action="{% url 'login' %}" class="form">

@@ -185,6 +185,14 @@
         text-align: center;
     }
 
+    .second-form {
+        width: clamp(350px, 100%, 400px);
+    }
+
+    .form-header-second-form {
+        margin-bottom: 25px;
+    }
+
     .update-profile-form {
         height: 47%;
     }
@@ -337,16 +345,19 @@
         margin: 30px auto 0 auto;
     }
     /* POPUP FORM STYLING END */
+
+    /* BACKGROUND IMAGE STYLING START */
+    .page-background-image {
+        height: 82.1vh;
+        width: 100vw;
+        object-fit: cover;
+        overflow: hidden;
+        filter: brightness(60%);
+    }
+    /* BACKGROUND IMAGE STYLING END */
 /* UNIVERSAL STYLING END */
 
 /* LOGIN PAGE STYLING START */
-.login-page-image {
-    height: 82.1vh;
-    width: 100vw;
-    object-fit: cover;
-    overflow: hidden;
-    filter: brightness(60%);
-}
 
 .login-form {
     height: 38%;
@@ -545,6 +556,35 @@
 /* EDIT ROUTE PAGE STYLING END */
 
 /* CREATE ROUTE PAGE STYLING START */
+.route-form {
+    height: 38%;
+}
+
+.form-part-2 {
+    margin-top: 5px;
+}
+
+.second-form-half {
+    height: 50%;
+}
+
+.continue-button {
+    margin: 10px auto 0 auto;
+    font-family: var(--font-maven);
+    font-size: clamp(16px, 4vw, 20px);
+    font-weight: bold;
+    height: 35px;
+    width: 120px;
+    border-radius: 5px;
+    background-color: var(--main-button-color);
+    border: none;
+    color: var(--page-bg);
+    line-height: 35px;
+}
+
+.continue-button:hover {
+    background-color: var(--main-button-color-darker);
+}
 /* CREATE ROUTE PAGE STYLING END */
 
 /* ROUTE PAGE STYLING START */
