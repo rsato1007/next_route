@@ -161,6 +161,103 @@
     /* FOOTER STYLING END */
 
     /* POPUP FORM STYLING START */
+    .form-popup-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.85);
+        top: 0;
+    }
+
+    .form-popup {
+        margin: 0 auto;
+        background-color: var(--page-bg);
+        width: 25%;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 10px 10px 10px 10px;
+        text-align: center;
+    }
+
+    .update-profile-form {
+        height: 47%;
+    }
+
+    .form-header {
+        background-color: var(--page-main-color);
+        color: var(--page-bg);
+        text-align: center;
+        height: 60px;
+        font-weight: bold;
+        font-family: var(--font-maven);
+        font-size: clamp(20px, 4vw, 24px);
+        line-height: 60px;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .form {
+        display: inline-block;
+        margin-top: 25px;
+    }
+
+    .form-input {
+        margin-bottom: 15px;
+        width: 250px;
+    }
+
+    .form-label {
+        margin-bottom: 7px;
+        display: inline-block;
+        width: 250px;
+        text-align: left;
+        font-family: var(--font-maven);
+        font-weight: bold;
+    }
+
+    .password-message {
+        margin: 0 0 10px 0;
+        color: red;
+    }
+
+    .form-buttons-container {
+        width: 250px;
+        margin-top: 20px;
+        padding-bottom: 30px;
+    }
+
+    .cancel-button {
+        display: inline-block;
+        float: left;
+        height: 30px;
+        width: 110px;
+        background-color: var(--cancel-button-color);
+        font-family: var(--font-maven);
+        font-size: clamp(12px, 4vw, 16px);
+        font-weight: bold;
+        line-height: 30px;
+        border-radius: 5px;
+        color: var(--page-bg);
+    }
+
+    .submit-button {
+        float: right;
+        margin-right: -7px;
+        font-family: var(--font-maven);
+        font-size: clamp(12px, 4vw, 16px);
+        font-weight: bold;
+        height: 30px;
+        width: 110px;
+        border-radius: 5px;
+        background-color: var(--main-button-color);
+        border: none;
+        color: var(--page-bg);
+    }
+
+    .submit-button:hover {
+        background-color: var(--main-button-color-darker);
+    }
     /* POPUP FORM STYLING END */
 /* UNIVERSAL STYLING END */
 
@@ -286,6 +383,24 @@
     font-family: var(--font-merriweather);
     font-weight: bold;
     font-size: clamp(20px, 4vw, 25px); 
+}
+
+.edit_profile_button {
+    text-align: center;
+    margin: 15px auto -2px auto;
+    font-family: var(--font-maven);
+    font-weight: bold;
+    font-size: clamp(15px, 4vw, 18px);
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    background-color: var(--main-button-color);
+    color: var(--page-bg);
+    border-radius: 5px;
+}
+
+.edit_profile_button:hover {
+    background-color: var(--main-button-color-darker);
 }
 
 .profile-page-card-divider {

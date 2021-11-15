@@ -9,7 +9,7 @@
             </div>
             <div class="profile-username-text">{{ user_profile.username }}</div>
             {% if user.is_authenticated and user.username == user_profile.username %}
-                <!-- <div class="edit_profile_button">Edit Profile</div> -->
+                <div class="edit_profile_button">Edit Profile</div>
             {% endif %}
             <hr class="profile-page-card-divider">
             <div class="profile-page-card-info">
@@ -48,21 +48,34 @@
         </div>
     </div>
     {% if user.is_authenticated and user.username == user_profile.username %}
-        <div class="edit_profile_container no-show">
-            <form action="/accounts/{{ user_profile.pk }}/edit/" method="post">
-                {% csrf_token %}
-                <label for="location">Location</label>
-                <input type="text" name="location" id="location">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" class="password-required">
-                <label for="password">Re-Enter Password</label>
-                <input type="password" name="password_reenter" id="password_reenter">
-                <p class="password-message no-show">Passwords must be matching</p>
-                <label for="image">Profile Image</label>
-                <input type="file" name="image" id="image">
-                <div class="edit_profile_cancel_button">Cancel</div>
-                <input type="submit">
-            </form>
+        <div class="edit_profile_container no-show form-popup-container">
+            <div class="form-popup  update-profile-form">
+                <div class="form-header">Update Profile</div>
+                <form action="/accounts/{{ user_profile.pk }}/edit/" method="post" class="form">
+                    {% csrf_token %}
+                    <label for="location" class="form-label">Location</label>
+                    <br>
+                    <input type="text" name="location" id="location" class="form-input">
+                    <br>
+                    <label for="password" class="form-label">Update Password</label>
+                    <br>
+                    <input type="password" name="password" id="password" class="password-required form-input">
+                    <br>
+                    <label for="password" class="form-label">Re-Enter New Password</label>
+                    <br>
+                    <input type="password" name="password_reenter" id="password_reenter" class="form-input">
+                    <br>
+                    <p class="password-message no-show">Passwords must be matching</p>
+                    <label for="image" class="form-label">Update Profile Image</label>
+                    <br>
+                    <input type="file" name="image" id="image" class="form-input">
+                    <br>
+                    <div class="form-buttons-container">
+                        <div class="edit_profile_cancel_button cancel-button">Cancel</div>
+                        <input type="submit" class="submit-button">
+                    </div>
+                </form>
+            </div>
         </div>
     {% endif %}
 {% endblock %}
