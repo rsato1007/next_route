@@ -205,6 +205,113 @@
 /* SPLASH PAGE STYLING END */
 
 /* PROFILE PAGE STYLING START */
+.profile-page-container {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 34% 66%;
+    grid-template-rows: 1fr 1fr;
+    margin: clamp(30px, 5vw, 60px) clamp(35px, 10vw, 200px);
+}
+
+.profile-page-card-container {
+    grid-area: 1 / 1 / span 2 / 1;
+    border: 1px solid #777777;
+    box-shadow: 2px 2px 2px rgba(58, 58, 58, .5);
+}
+
+.profile-page-image-container {
+    text-align: center;
+}
+
+.profile-user-image {
+    height: 125px;
+    width: 125px;
+    border-radius: 50%;
+    margin-top: 30px;
+}
+
+.profile-page-routes-reviews-top-section {
+    grid-area: 1 / 2 / 1 / 2;
+    display: inline-block;
+    margin-top: 7px;
+}
+
+.profile-page-route-review-num {
+    display: inline-flex;
+    margin-top: 0;
+    font-family: var(--font-merriweather);
+    font-weight: bold;
+    font-size: clamp(20px, 4vw, 24px);
+}
+
+.profile-page-num-results {
+    margin-top: 0;
+}
+
+.profile-route-review-slider {
+    float: right;
+    border: 2px solid var(--page-main-color);
+    height: 49px;
+    border-radius: 10px;
+    display: inline-flex;
+    border: 2px solid var(--page-main-color);
+    overflow: hidden;
+}
+
+.profile-slider-text {
+    font-family: var(--font-overpass);
+    font-weight: bold;
+    font-size: clamp(14px, 6vw, 20px);
+    line-height: 45px;
+}
+
+.profile-slider-green-option {
+    background-color: var(--page-main-color);
+    color: var(--page-bg);
+    width: 100%;
+    padding: 5px 20px;
+    border-radius: 2px 0 0 2px;
+}
+
+.profile-slider-white-option {
+    color: var(--page-main-color);
+    background-color: var(--page-bg);
+    width: 100%;
+    padding: 5px 20px;
+    border-radius: 0 2px 2px 0;
+}
+
+.profile-username-text {
+    text-align: center;
+    font-family: var(--font-merriweather);
+    font-weight: bold;
+    font-size: clamp(20px, 4vw, 25px); 
+}
+
+.profile-page-card-divider {
+    border-top: 1px solid var(--page-main-color);
+    margin: 30px 30px 15px 30px;
+}
+
+.profile-page-card-info {
+    margin: 0 30px 30px 30px;
+}
+
+.profile-page-individual-info {
+    margin-top: 15px;
+    font-family: var(--font-maven);
+    font-weight: bold;
+}
+
+.profile-page-card-text-title {
+    color: #777777
+}
+
+.profile-page-card-text {
+    color: var(--page-main-color);
+    text-align: right;
+    float: right;
+}
 /* PROFILE PAGE STYLING END */
 
 /* SEARCH PAGE STYLING START */

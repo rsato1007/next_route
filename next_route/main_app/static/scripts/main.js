@@ -21,6 +21,16 @@ const hideElement = (domEl) => {
     domEl.classList.add("no-show");
 }
 
+const greenButton = (domEl) => {
+    domEl.classList.remove("profile-slider-white-option");
+    domEl.classList.add("profile-slider-green-option");
+}
+
+const whiteButton = (domEl) => {
+    domEl.classList.add("profile-slider-white-option");
+    domEl.classList.remove("profile-slider-green-option");
+}
+
 const passWordValidation = (field1, field2) => {
     if (field1.value !== '') {
         field1.setAttribute('required', '');
@@ -46,6 +56,8 @@ if (userRouteButtonEl) {
         showElement(userRouteEl);
         hideElement(document.querySelector(".user_reviews_header"));
         showElement(document.querySelector(".user_routes_header"));
+        greenButton(document.querySelector(".user_routes_button"));
+        whiteButton(document.querySelector(".user_reviews_button"));
     });
 }
 
@@ -56,6 +68,8 @@ if (userReviewButtonEl) {
         showElement(userReviewEl);
         hideElement(document.querySelector(".user_routes_header"));
         showElement(document.querySelector(".user_reviews_header"));
+        greenButton(document.querySelector(".user_reviews_button"));
+        whiteButton(document.querySelector(".user_routes_button"));
     });
 }
 

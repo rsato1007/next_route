@@ -3,26 +3,34 @@
 {% block content %}
     <div class="profile-page-container">
         <!-- Profile Card -->
-        <div>
-            <img src="https://cultivatedculture.com/wp-content/uploads/2019/12/LinkedIn-Profile-Picture-Example-Madeline-Mann.jpeg" alt="" class="review-user-image">
-            <div>{{ user_profile.username }}</div>
-            {% if user.is_authenticated and user.username == user_profile.username %}
-                <div class="edit_profile_button">Edit Profile</div>
-            {% endif %}
-            <div>{{ user.date_joined }}</div>
-        </div>
-        <!-- These need to be altered on the buttons only, but this is okay for now. -->
-        <h4>
-            <p class="user_routes_header show">{{ routes.count }} Route(s)</p>
-            <p class="user_reviews_header no-show">{{ reviews.count }}  Review(s)</p>
-            from {{user_profile.username}}
-        </h4>
-        <div>
-            <div class="user_routes_button">
-                Routes
+        <div class="profile-page-card-container">
+            <div class="profile-page-image-container">
+                <img src="https://cultivatedculture.com/wp-content/uploads/2019/12/LinkedIn-Profile-Picture-Example-Madeline-Mann.jpeg" alt="" class="profile-user-image">
             </div>
-            <div class="user_reviews_button">
-                Reviews
+            <div class="profile-username-text">{{ user_profile.username }}</div>
+            {% if user.is_authenticated and user.username == user_profile.username %}
+                <!-- <div class="edit_profile_button">Edit Profile</div> -->
+            {% endif %}
+            <hr class="profile-page-card-divider">
+            <div class="profile-page-card-info">
+                <div class="profile-page-individual-info">
+                    <span class="profile-page-card-text-title">Location:</span>
+                    <span class="profile-page-card-text">{{ user.location }}</span>
+                </div>
+                <div class="profile-page-individual-info">
+                    <span class="profile-page-card-text-title">Date Joined:</span>
+                    <span class="profile-page-card-text">{{ user.date_joined }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="profile-page-routes-reviews-top-section">
+            <h4 class="profile-page-route-review-num">
+                <p class="user_routes_header show profile-page-num-results">{{ routes.count }} Route(s) from {{user_profile.username}}</p>
+                <p class="user_reviews_header no-show profile-page-num-results">{{ reviews.count }} Review(s) from {{user_profile.username}}</p>
+            </h4>
+            <div class="profile-route-review-slider">
+                <div class="user_routes_button profile-slider-text profile-slider-green-option">Routes</div>
+                <div class="user_reviews_button profile-slider-text profile-slider-white-option">Reviews</div>
             </div>
         </div>
         <div class="user_routes show">
