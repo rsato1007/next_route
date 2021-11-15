@@ -152,7 +152,6 @@ class RouteSearch(ListView):
                 pitch__range=(0, int(self.request.GET.get("max-pitches"))),
                 location__icontains=self.request.GET.get("location")
             )
-            route_count = routes.count()
             return routes
 
     # def get_context_data(self, **kwargs):
@@ -190,6 +189,17 @@ class CreateRoute(View):
         route = Route.objects.create(name=name, location=location, difficulty=difficulty, description=description, image=image, climb_type=climb_type, pitch=pitch, user=user)
         return redirect('route_page', pk=route.pk)
 
+def reviewAverage(reviews):
+    i = 0;
+    sum = 0;
+    for review in reviews:
+        i += 1
+        sum += review.rating
+    if i == 0:
+        return 0
+    else:
+        return sum/i
+
 class RoutePage(DetailView):
     model = Route
     template_name = 'route_page.html'
@@ -198,8 +208,8 @@ class RoutePage(DetailView):
         pk = self.kwargs.get('pk')
         route = Route.objects.get(pk=pk)
         context = super().get_context_data(**kwargs)
-        # This will be our template for when the user starts posting routes and reviews.
         context["reviews"] = route.review.all().order_by('-posted_at')
+        context["review_score"] = reviewAverage(context["reviews"])
         return context
 
 @method_decorator(login_required, name='dispatch')

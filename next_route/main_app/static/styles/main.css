@@ -263,10 +263,10 @@
 }
 
 .route-details-section {
-    border-right: 1px solid var(--page-main-color);
+    border-right: 0.5px solid var(--page-main-color);
 }
 
-.route-details-description-header {
+.route-details-description-review-header {
     padding: 15px 0 15px 20px;
     font-family: var(--font-merriweather);
     font-weight: bold;
@@ -286,6 +286,10 @@
     margin-top: 13px;
 }
 
+.route-details-text-logged-out {
+    margin-bottom: 25px;
+}
+
 .edit-route-button-link {
     text-decoration: none;
 }
@@ -301,9 +305,106 @@
     text-align: center;
     border-radius: 5px;
     font-weight: bold;
+    margin-bottom: 25px;
 }
 
 .edit-route-button:hover {
     background-color: var(--main-button-color-darker);
+}
+
+.route-description-section {
+    border-left: 0.5px solid var(--page-main-color);
+}
+
+.route-description-text {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 25px;
+    margin-top: 13px;
+    font-family: var(--font-merriweather);
+    font-size: clamp(10px, 4vw, 14px);
+    word-spacing: 1.5px;
+    line-height: 28px;
+}
+
+.route-reviews-button-score-container {
+    padding: 30px 50px 20px 20px;
+}
+
+.review-button {
+    float: right;
+    height: 35px;
+    width: 150px;
+    text-align: center;
+    line-height: 35px;
+    font-family: var(--font-maven);
+    font-weight: bold;
+    color: var(--page-bg);
+    border-radius: 5px;
+    font-size: 1.1rem;
+}
+
+.review-button-colored {
+    background-color: var(--main-button-color);
+}
+
+.review-button-colored:hover {
+    background-color: var(--main-button-color-darker);
+}
+
+.review-button-gray {
+    background-color: var(--cancel-button-color);
+}
+
+.individual-review {
+    margin: 25px 20px 0px 20px;
+    border-top: 0.5px solid var(--page-main-color);
+}
+
+.review-top-section {
+    margin-top: 25px;
+    display: inline-flex;
+}
+
+.review-user-image {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
+
+.review-top-section-information {
+    margin-left: 20px;
+}
+
+.review-username {
+    margin: 0 0 7px 0;
+    font-size: clamp(15px, 2vw, 18px);
+    font-family: var(--font-maven);
+    font-weight: bold;
+}
+
+.review-top-section-rating-posted {
+    display: inline-flex;
+}
+
+.review-posted-time {
+    margin-left: 20px;
+    font-size: clamp(12px, 2vw, 15px);
+    word-spacing: -4px;
+    color: #666666;
+    font-weight: bold;
+}
+
+.review-content {
+    margin-top: 15px;
+    font-family: var(--font-overpass);
+    font-size: clamp(14px, 3vw, 15px);
+    font-weight: 500;
+}
+
+.review-line-break {
+    border-top: 1px solid var(--page-main-color);
+    width: calc(100% - 40px);
+    margin-top: 25px;
 }
 /* ROUTE PAGE STYLING END */

@@ -1,41 +1,43 @@
 {% extends 'base.html' %}
 {% block title %} {{user_profile.username}}'s Profile Page {% endblock %}
 {% block content %}
-    <!-- Profile Card -->
-    <div>
-        <div>profile image.</div>
-        <div>{{ user_profile.username }}</div>
-        {% if user.is_authenticated and user.username == user_profile.username %}
-            <div class="edit_profile_button">Edit Profile</div>
-        {% endif %}
-        <div>{{ user.date_joined }}</div>
-    </div>
-    <!-- These need to be altered on the buttons only, but this is okay for now. -->
-    <h4>
-        <p class="user_routes_header show">{{ routes.count }} Route(s)</p>
-        <p class="user_reviews_header no-show">{{ reviews.count }}  Review(s)</p>
-        from {{user_profile.username}}
-    </h4>
-    <div>
-        <div class="user_routes_button">
-            Routes
+    <div class="profile-page-container">
+        <!-- Profile Card -->
+        <div>
+            <img src="https://cultivatedculture.com/wp-content/uploads/2019/12/LinkedIn-Profile-Picture-Example-Madeline-Mann.jpeg" alt="" class="review-user-image">
+            <div>{{ user_profile.username }}</div>
+            {% if user.is_authenticated and user.username == user_profile.username %}
+                <div class="edit_profile_button">Edit Profile</div>
+            {% endif %}
+            <div>{{ user.date_joined }}</div>
         </div>
-        <div class="user_reviews_button">
-            Reviews
+        <!-- These need to be altered on the buttons only, but this is okay for now. -->
+        <h4>
+            <p class="user_routes_header show">{{ routes.count }} Route(s)</p>
+            <p class="user_reviews_header no-show">{{ reviews.count }}  Review(s)</p>
+            from {{user_profile.username}}
+        </h4>
+        <div>
+            <div class="user_routes_button">
+                Routes
+            </div>
+            <div class="user_reviews_button">
+                Reviews
+            </div>
         </div>
-    </div>
-    <div class="user_routes show">
-        {% for route in routes %}
-        {% empty %}
-            <p>No Routes Yet from {{ user_profile.username }}</p>
-        {% endfor %}
-    </div>
-    <div class="user_reviews no-show">
-        <!-- Look at having the backend send a number of objects being sent instead. -->
-        {% for review in reviews %}
-        {% empty %}
-            <p> No Reviews Yet from {{ user_profile.username }}</p>
-        {% endfor %}
+        <div class="user_routes show">
+            {% for route in routes %}
+            {% empty %}
+                <p>No Routes Yet from {{ user_profile.username }}</p>
+            {% endfor %}
+        </div>
+        <div class="user_reviews no-show">
+            <!-- Look at having the backend send a number of objects being sent instead. -->
+            {% for review in reviews %}
+            {% empty %}
+                <p> No Reviews Yet from {{ user_profile.username }}</p>
+            {% endfor %}
+        </div>
     </div>
     {% if user.is_authenticated and user.username == user_profile.username %}
         <div class="edit_profile_container no-show">

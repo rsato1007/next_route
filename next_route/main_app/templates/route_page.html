@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %} Next Route - {{ route.name }} {% endblock %}
 {% block content %}
     <div class="route-page-container">
@@ -12,45 +13,55 @@
             </div>
             <div class="route-details-description-container">
                 <div class="route-details-section">
-                    <div class="route-details-description-header">Route Details:</div>
+                    <div class="route-details-description-review-header">Route Details:</div>
                     <div class="route-details-text-container">
                         <div class="route-details-text">Location: <b>{{ route.location }}</b></div>
                         <div class="route-details-text">difficulty: <b>{{ route.difficulty }}</b></div>
                         <div class="route-details-text">Type of Climb: <b>{{ route.climb_type }}</b></div>
-                        <div class="route-details-text">Pitches: <b>{{ route.pitch }}</b></div>
                         {% if user.is_authenticated and user.pk == route.user.pk %}
+                            <div class="route-details-text">Pitches: <b>{{ route.pitch }}</b></div>
                             <a href="{% url 'route_update' route.pk %}" class="edit-route-button-link"><div class="route-details-text edit-route-button">Edit Route</div></a>
+                        {% else %}
+                            <div class="route-details-text route-details-text-logged-out">Pitches: <b>{{ route.pitch }}</b></div>
                         {% endif %}
                     </div>
                 </div>
                 <div class="route-description-section">
-                    <div class="route-details-description-header">Description:</div>
-                    <div>{{ route.description }}</div>
+                    <div class="route-details-description-review-header">Description:</div>
+                    <div class="route-description-text">{{ route.description }}</div>
                 </div>
             </div>
         </div>
         <div class="route-review-container">
-            <div>Route Reviews:</div>
-            <div>
-                <p>4 out of 5 Stars</p>
+            <div class="route-details-description-review-header">Route Reviews:</div>
+            <div class="route-reviews-button-score-container">
+                <span>AVERAGE SCORE: {{ review_score }} out of 5 stars</span>
                 {% if user.is_authenticated and user.pk != route.user.pk %}
-                    <div class="write-review-button">Write a Review</div>
+                    <span class="write-review-button review-button review-button-colored">Write a Review</span>
                 {% elif user.is_authenticated and user.pk == route.user.pk %}
-                    <div>Write a Review</div>
+                    <span class="review-button review-button-gray">Write a Review</span>
                 {% else %}
-                    <a href="{% url 'signup' %}"><div>Write a Review</div></a>
+                    <a href="{% url 'signup' %}"><span class="review-button review-button-colored">Write a Review</span></a>
                 {% endif %}
             </div>
             <div class="review-list-container">
                 {% for review in reviews %}
                     <div class="individual-review">
-                        {% if review.user.image %}
-                            <p>Here's the image</p>
-                        {% endif %}
-                        <h5>{{ review.user.username }}</h5>
-                        <div>Rating</div>
-                        <div>Posted 1 Hour Ago</div>
-                        <div>{{ review.content }}</div>
+                        <div class="review-top-section">
+                            {% if review.user.image %}
+                                <img src="https://cultivatedculture.com/wp-content/uploads/2019/12/LinkedIn-Profile-Picture-Example-Madeline-Mann.jpeg" alt="" class="review-user-image">
+                            {% else %}
+                                <img src="{% static 'images/blank-profile-pic.jpg' %}" alt="" class="review-user-image">
+                            {% endif %}
+                            <div class="review-top-section-information">
+                                <h5 class="review-username">{{ review.user.username }}</h5>
+                                <div class="review-top-section-rating-posted">
+                                    <div>{{ review.rating }}/5</div>
+                                    <div class="review-posted-time">Posted 1 Hour Ago</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-content">{{ review.content }}</div>
                         <div>
                             {% if user.is_authenticated and review.user.username == user.username %}
                                 <p class="edit-review-button">Edit Review</p>
@@ -144,6 +155,7 @@
                     <p>No reviews yet.</p>
                 {% endfor %}
             </div>
+            <hr class="review-line-break">
         </div>
     </div>
     {% if user.is_authenticated and route.user.pk != user.pk %}
