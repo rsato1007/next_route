@@ -29,7 +29,10 @@ class Signup(View):
         return render(request, "new_account.html", context)
     
     def post(self, request):
-        form = MyUserCreationForm(request.POST)
+        updated_request = request.POST.copy()
+        updated_request["is_admin"] = False
+        updated_request["is_banned"] = False
+        form = MyUserCreationForm(updated_request)
         if form.is_valid():
             user = form.save()
             login(request, user)
