@@ -1,23 +1,32 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %} Join Next Route {% endblock %}
 {% block content %}
-<h1 class="title">Sign Up</h1>
-<form method="post" action="{% url 'signup' %}">
-  {% csrf_token %}
-  <!-- NEW FORM -->
-  <label for="id_username">Username</label>
-  <input type="text" name="username" maxlength="150" autofocus required id="id_username">
-
-  <label for="id_location">Location</label>
-  <input type="text" name="location" maxlength="100" required id="id_location">
-
-  <label for="id_password1">Password</label>
-  <input type="password" name="password1" autocomplete="new-password" required id="id_password1">
-
-  <label for="id_password2">Password Confirmation</label>
-  <input type="password" name="password2" autocomplete="new-password" required id="id_password2">
-  <!-- NEW FORM -->
-  <input type="submit" class="btn" value="Sign Up" />
-  <input type="hidden" name="next" value="{{ next }}" />
-</form>
+<img class="page-background-image" src="{% static 'images/signup-page.jpg' %}">
+<div class="form-popup signup-form">
+  <div class="form-header">Signup</div>
+  <form method="post" action="{% url 'signup' %}" class="form">
+    {% csrf_token %}
+    <!-- NEW FORM -->
+    <label for="id_username" class="form-label">Username</label>
+    <br>
+    <input type="text" name="username" maxlength="150" autofocus required id="id_username" class="form-input">
+    <br>
+    <label for="id_location" class="form-label">Location</label>
+    <br>
+    <input type="text" name="location" maxlength="100" required id="id_location" class="form-input">
+    <br>
+    <label for="id_password1" class="form-label">Password</label>
+    <br>
+    <input type="password" name="password1" autocomplete="new-password" required id="id_password1" class="form-input">
+    <br>
+    <label for="id_password2" class="form-label">Password Confirmation</label>
+    <br>
+    <input type="password" name="password2" autocomplete="new-password" required id="id_password2" class="form-input">
+    <br>
+    <!-- NEW FORM -->
+    <input type="submit" class="btn login-button" value="Sign Up" />
+    <input type="hidden" name="next" value="{{ next }}" />
+  </form>
+</div>
 {% endblock %}

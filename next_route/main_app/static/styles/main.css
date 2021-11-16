@@ -357,8 +357,13 @@
     /* BACKGROUND IMAGE STYLING END */
 /* UNIVERSAL STYLING END */
 
-/* LOGIN PAGE STYLING START */
+/* SIGNUP PAGE STYLING START */
+.signup-form {
+    height: 43%;
+}
+/* SIGNUP PAGE STYLING END */
 
+/* LOGIN PAGE STYLING START */
 .login-form {
     height: 38%;
 }
