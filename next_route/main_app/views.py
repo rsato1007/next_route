@@ -16,6 +16,11 @@ from django.db.models import Q
 from decimal import Decimal
 import operator
 from functools import reduce
+import uuid
+import boto3
+
+S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
+BUCKET = 'nextroute'
 
 # Create your views here.
 class Splash(TemplateView):
@@ -181,6 +186,15 @@ class CreateRoute(View):
             raise PermissionDenied()
 
     def post(self, request):
+        route_image = request.FILES.get('image', False)
+        url = False
+        # This is what generates the URL for our bucket.
+        if route_image:
+            s3 = boto3.client('s3')
+            key = uuid.uuid4().hex[:6] + route_image.name[route_image.name.rfind('.'):]
+            s3.upload_fileobj(route_image, BUCKET, key)
+            url = f"{S3_BASE_URL}{BUCKET}/{key}"
+
         name = request.POST.get('name')
         location = request.POST.get('location')
         difficulty = request.POST.get('difficulty')
@@ -189,7 +203,7 @@ class CreateRoute(View):
         climb_type = request.POST.get('climb_type')
         pitch = request.POST.get('pitch')
         user = CustomUser.objects.get(pk=request.user.pk)
-        route = Route.objects.create(name=name, location=location, difficulty=difficulty, description=description, image=image, climb_type=climb_type, pitch=pitch, user=user)
+        route = Route.objects.create(name=name, location=location, difficulty=difficulty, description=description, url=url, climb_type=climb_type, pitch=pitch, user=user)
         return redirect('route_page', pk=route.pk)
 
 def reviewAverage(reviews):

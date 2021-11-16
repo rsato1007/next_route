@@ -5,7 +5,7 @@
 <img src="{% static 'images/route-page.jpg' %}" alt="" class="page-background-image">
     <div class="form-popup route-form route-form-first-half">
         <div class="form-header">Create Route</div>
-        <form method="post" url="{% url 'create_route' %}" class="form">
+        <form method="post" url="{% url 'create_route' %}" class="form" enctype="multipart/form-data">
             {% csrf_token %}
             <label for="name" class="form-label">Route Name:</label>
             <br>
@@ -97,5 +97,4 @@
                 </div>
             </div>
         </form>
-</img>
 {% endblock %}

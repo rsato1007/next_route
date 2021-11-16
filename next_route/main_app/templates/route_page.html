@@ -5,7 +5,11 @@
     <div class="route-page-container">
         <div class="route-information-container">
             <div class="route-page-image-container">
-                <img src="https://www.rei.com/dam/rinckenberger_111815_1406_main_lg.jpg" alt="" class="route-page-image">
+                {% if route.url %}
+                    <img src="{{ route.url }}" alt="" class="route-page-image">
+                {% else %}
+                    <img src="https://www.rei.com/dam/rinckenberger_111815_1406_main_lg.jpg" alt="" class="route-page-image">
+                {% endif %}
                 <div class="route-page-image-header">
                     <h4 class="route-page-route-name">{{ route.name }}</h4>
                     <p class="route-page-route-username">Shared by {{ route.user.username }}</p>
