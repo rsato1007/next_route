@@ -74,12 +74,19 @@ class EditProfile(View):
             updatedUser['password'] = make_password(request.POST.get('password'))
         else:
             updatedUser['password'] = user[0].password
-        if request.POST.get('image'):
-            updatedUser['image'] = request.POST.get('image')
+        if request.FILES.get('image'):
+            user_image = request.FILES.get('image', False)
+            # This is what generates the URL for our bucket.
+            if user_image:
+                s3 = boto3.client('s3')
+                key = uuid.uuid4().hex[:6] + user_image.name[user_image.name.rfind('.'):]
+                s3.upload_fileobj(user_image, BUCKET, key)
+                url = f"{S3_BASE_URL}{BUCKET}/{key}"
+                updatedUser['url'] = url
         else:
-            updatedUser['image'] = user[0].image
+            updatedUser['url'] = user[0].url
 
-        user.update(location = updatedUser['location'], password = updatedUser['password'], image = updatedUser['image'])
+        user.update(location = updatedUser['location'], password = updatedUser['password'], url = updatedUser['url'])
         return redirect('profile', pk=pk)
 
 # @method_decorator(login_required, name='dispatch')

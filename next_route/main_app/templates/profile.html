@@ -6,7 +6,11 @@
         <!-- Profile Card -->
         <div class="profile-page-card-container">
             <div class="profile-page-image-container">
-                <img src="https://cultivatedculture.com/wp-content/uploads/2019/12/LinkedIn-Profile-Picture-Example-Madeline-Mann.jpeg" alt="" class="profile-user-image">
+                {% if user_profile.url %}
+                    <img src="{{ user_profile.url }}" alt="" class="profile-user-image">
+                {% else %}
+                    <img src="{% static 'images/blank-profile-pic.jpg' %}" alt="" class="profile-user-image">
+                {% endif %}  
             </div>
             <div class="profile-username-text">{{ user_profile.username }}</div>
             {% if user.is_authenticated and user.username == user_profile.username %}
@@ -67,8 +71,8 @@
             {% for review in reviews %}
                 <div class="individual-review">
                     <div class="review-top-section">
-                        {% if review.user.image %}
-                            <img src="https://cultivatedculture.com/wp-content/uploads/2019/12/LinkedIn-Profile-Picture-Example-Madeline-Mann.jpeg" alt="" class="review-user-image">
+                        {% if review.user.url %}
+                            <img src="{{ review.user.url }}" alt="" class="review-user-image">
                         {% else %}
                             <img src="{% static 'images/blank-profile-pic.jpg' %}" alt="" class="review-user-image">
                         {% endif %}
@@ -196,7 +200,7 @@
         <div class="edit_profile_container no-show form-popup-container">
             <div class="form-popup  update-profile-form">
                 <div class="form-header">Update Profile</div>
-                <form action="/accounts/{{ user_profile.pk }}/edit/" method="post" class="form">
+                <form action="/accounts/{{ user_profile.pk }}/edit/" method="post" class="form" enctype="multipart/form-data">
                     {% csrf_token %}
                     <label for="location" class="form-label">Location</label>
                     <br>

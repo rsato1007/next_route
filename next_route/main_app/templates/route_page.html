@@ -52,8 +52,8 @@
                 {% for review in reviews %}
                     <div class="individual-review">
                         <div class="review-top-section">
-                            {% if review.user.image %}
-                                <img src="https://cultivatedculture.com/wp-content/uploads/2019/12/LinkedIn-Profile-Picture-Example-Madeline-Mann.jpeg" alt="" class="review-user-image">
+                            {% if review.user.url %}
+                                <img src="{{ review.user.url }}" alt="" class="review-user-image">
                             {% else %}
                                 <img src="{% static 'images/blank-profile-pic.jpg' %}" alt="" class="review-user-image">
                             {% endif %}
