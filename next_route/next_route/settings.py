@@ -15,8 +15,6 @@ import os
 import environ
 import django_heroku
 
-django_heroku.settings(locals())
-
 env = environ.Env()
 environ.Env.read_env()
 # from next_route.secrets import APP_SECRET_KEY
@@ -140,3 +138,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+django_heroku.settings(locals())
