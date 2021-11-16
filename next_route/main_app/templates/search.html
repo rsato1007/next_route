@@ -1,106 +1,92 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %} Find a Route {% endblock %}
 {% block content %}
-    <form action="/route">
-        <div>
-            <label for="location">Where do you want to climb?</label>
-            <input type="text" id="location" name="location" required>
-            <label for="min-difficulty">Min Difficulty</label>
-            <select id="min-difficulty" name="min-difficulty">
-                <option value="5.0">5.0</option>
-                <option value="5.1">5.1</option>
-                <option value="5.2">5.2</option>
-                <option value="5.3">5.3</option>
-                <option value="5.4">5.4</option>
-                <option value="5.5">5.5</option>
-                <option value="5.6">5.6</option>
-                <option value="5.7">5.7</option>
-                <option value="5.8">5.8</option>
-                <option value="5.9">5.9</option>
-                <option value="5.10">5.10</option>
-                <option value="5.11">5.11</option>
-                <option value="5.12">5.12</option>
-                <option value="5.13">5.13</option>
-                <option value="5.14">5.14</option>
-                <option value="5.15">5.15</option>
-            </select>
-            <label for="max-difficulty">Max Difficulty</label>
-            <select id="max-difficulty" name="max-difficulty">
-                <option value="5.0">5.0</option>
-                <option value="5.1">5.1</option>
-                <option value="5.2">5.2</option>
-                <option value="5.3">5.3</option>
-                <option value="5.4">5.4</option>
-                <option value="5.5">5.5</option>
-                <option value="5.6">5.6</option>
-                <option value="5.7">5.7</option>
-                <option value="5.8">5.8</option>
-                <option value="5.9">5.9</option>
-                <option value="5.10">5.10</option>
-                <option value="5.11">5.11</option>
-                <option value="5.12">5.12</option>
-                <option value="5.13">5.13</option>
-                <option value="5.14">5.14</option>
-                <option value="5.15">5.15</option>
-            </select>
-            <label for="max-pitches">Max Pitches</label>
-            <select id="max-pitches" name="max-pitches">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10+</option>
-            </select>
-            <input type="submit">
-        </div>
-    </form>
-    <p>{{routes}}</p>
-    <p>{{route_count}}</p>
-    <div>
+    <!-- SEARCH FORM START -->
+    <div class="search-form-container">
+        <img src="{% static 'images/search-image.jpeg' %}" alt="" class="search-image">
+            <form action="/route" class="search-form">
+                <div class="climb-container">
+                    <label for="location" class="route-search-label">Where do you want to climb?</label>
+                    <br>
+                    <input type="text" id="location" name="location" required class="search-location-input">
+                </div>
+                <div class="min-difficulty-container">
+                    <label for="min-difficulty" class="route-search-label">Min Difficulty</label>
+                    <br>
+                    <select id="min-difficulty" name="min-difficulty" class="search-min-diff-input">
+                        <option value="5.0">5.0</option>
+                        <option value="5.1">5.1</option>
+                        <option value="5.2">5.2</option>
+                        <option value="5.3">5.3</option>
+                        <option value="5.4">5.4</option>
+                        <option value="5.5">5.5</option>
+                        <option value="5.6">5.6</option>
+                        <option value="5.7">5.7</option>
+                        <option value="5.8">5.8</option>
+                        <option value="5.9">5.9</option>
+                        <option value="5.10">5.10</option>
+                        <option value="5.11">5.11</option>
+                        <option value="5.12">5.12</option>
+                        <option value="5.13">5.13</option>
+                        <option value="5.14">5.14</option>
+                        <option value="5.15">5.15</option>
+                    </select>
+                </div>
+                <div class="max-difficulty-container">
+                    <label for="max-difficulty" class="route-search-label">Max Difficulty</label>
+                    <br>
+                    <select id="max-difficulty" name="max-difficulty" class="search-max-diff-input">
+                        <option value="5.0">5.0</option>
+                        <option value="5.1">5.1</option>
+                        <option value="5.2">5.2</option>
+                        <option value="5.3">5.3</option>
+                        <option value="5.4">5.4</option>
+                        <option value="5.5">5.5</option>
+                        <option value="5.6">5.6</option>
+                        <option value="5.7">5.7</option>
+                        <option value="5.8">5.8</option>
+                        <option value="5.9">5.9</option>
+                        <option value="5.10">5.10</option>
+                        <option value="5.11">5.11</option>
+                        <option value="5.12">5.12</option>
+                        <option value="5.13">5.13</option>
+                        <option value="5.14">5.14</option>
+                        <option value="5.15">5.15</option>
+                    </select>
+                </div>
+                <div class="max-pitches-container">
+                    <label for="max-pitches" class="route-search-label">Max Pitches</label>
+                    <br>
+                    <select id="max-pitches" name="max-pitches" class="search-pitch-input">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10+</option>
+                    </select>
+                </div>
+                <input type="submit" class="submit-search-button" value="Find Routes">
+            </form>
+        </img>
+    </div>
+    <!-- SEARCH FORM END -->
+    <!-- ROUTE HEADER SEARCH RESULTS START -->
+    <div class="route-results-header">
         {% if route_list %}
-            <h3>Results for {{ route_list.count}} routes</h3>
+            <h3>Showing {{ route_list.count }} Route(s)</h3>
         {% else %}
             <h3>No Routes Found</h3>
         {% endif %}
+        <p>Sort by</p>
+        <div>Reviews</div>
     </div>
-    <div>
-        {% if route_list %}
-            {% for route in route_list %}
-                <div>
-                    <div>
-                        <p>{{ route.name }}</p>
-                        {% for review in route.review.all %}
-                            <p>{{ forloop.counter }} Reviews</p>
-                        {% empty %}
-                            <p>0 Reviews</p>
-                        {% endfor %}
-                        <p>Located: {{ route.location }}</p>
-                        <a href="{% url 'route_page' route.pk %}">View Route</a>
-                        <div>
-                            <p>Difficulty {{ route.difficulty }}</p>
-                            <p>Pitches {{ route.pitch }}</p>
-                            <p>Type {{ route.climb_type }}</p>
-                        </div>
-                    </div>
-                    <div>
-                        {% if route.image %}
-                        {% else %}
-                            <p>No Image Yet</p>
-                        {% endif %}
-                    </div>
-                </div>
-            {% endfor %}
-        {% else %}
-            <div>
-                No Routes Found
-            </div>
-        {% endif %}
-    </div>
+    <!-- ROUTE HEADER SEARCH RESULTS END -->
     <div>
         <p>Wanna contribute?</p>
         {% if user.is_authenticated %}

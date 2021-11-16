@@ -555,6 +555,75 @@
 /* PROFILE PAGE STYLING END */
 
 /* SEARCH PAGE STYLING START */
+.search-form-container {
+    position: relative;
+}
+
+.search-image {
+    width: 100%;
+    height: clamp(400px, 30vw, 700px);
+    object-fit: cover;
+    filter: brightness(55%);
+}
+
+.search-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-flex;
+    color: white;
+}
+
+.route-search-label {
+    display: inline-block;
+    margin-bottom: 5px;
+    font-family: var(--font-maven);
+    font-weight: bold;
+    font-size: clamp(12px, 1.5vw, 17px);
+}
+
+.search-location-input {
+    width: clamp(150px, 24vw, 300px);
+    font-size: 18px;
+}
+
+.search-min-diff-input {
+    width: clamp(120px, 17vw, 200px);
+    font-size: 20px;
+    text-align: center;
+}
+
+.search-max-diff-input {
+    width: clamp(120px, 17vw, 200px);
+    font-size: 20px;
+    text-align: center;
+}
+
+.search-pitch-input {
+    width: clamp(120px, 17vw, 200px);
+    font-size: 20px;
+    text-align: center;
+}
+
+.submit-search-button {
+    height: 24px;
+    margin-top: 26px;
+    background-color: var(--main-button-color);
+    color: var(--page-bg);
+    border: none;
+    width: 13vw;
+    margin-left: 20px;
+    font-family: var(--font-maven);
+    font-weight: bold;
+    font-size: 1.2em;
+    line-height: 24px;
+    border-radius: 5px;
+}
+
+.submit-search-button:hover {
+    background-color: var(--main-button-color-darker);
+}
 /* SEARCH PAGE STYLING END */
 
 /* EDIT ROUTE PAGE STYLING START */
