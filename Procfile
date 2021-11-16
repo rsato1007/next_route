@@ -1,1 +1,1 @@
-web: gunicorn next_route.wsgi
+web: gunicorn --pythonpath next_route next_route.wsgi
