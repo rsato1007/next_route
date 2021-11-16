@@ -76,27 +76,54 @@
         </img>
     </div>
     <!-- SEARCH FORM END -->
-    <!-- ROUTE HEADER SEARCH RESULTS START -->
-    <div class="route-results-header">
-        {% if route_list %}
-            <h3>Showing {{ route_list.count }} Route(s)</h3>
-        {% else %}
-            <h3>No Routes Found</h3>
-        {% endif %}
-        <p>Sort by</p>
-        <div>Reviews</div>
+    <!-- ROUTE SEARCH RESULTS START -->
+    <div class="route-results-container">
+        <div class="route-results-header">
+            {% if route_list %}
+                <h3 class="route-results-header-text">Showing {{ route_list.count }} Route(s)</h3>
+            {% else %}
+                <h3>No Routes Found</h3>
+            {% endif %}
+            <div class="results-sort-by-container">
+                <div class="sort-by-text">Sort by:</div>
+                <div class="route-results-button">Reviews</div>
+            </div>
+        </div>
+        <!-- LIST OF ROUTES -->
+        <div class="routes-list">
+            {% for route in route_list %}
+                <div class="individual-route-card-container">
+                    <div class="route-card-information-container">
+                        <h3 class="route-card-name">{{ route.name }}</h3>
+                        <div class="route-card-review-container">
+                            <p class="route-card-reviews-text">{{ route.review.count }} Reviews</p>
+                        </div>
+                        <div class="route-card-location-view">
+                            <p class="route-card-location-text">Located: {{ route.location }}</p>
+                            <a href="{% url 'route_page' route.pk %}" class="view-route-button-link"><div class="view-route-button">View Route</div></a>
+                        </div>
+                        <div class="route-card-misc-info">
+                            <p class="route-card-misc-info-text">Difficulty: <b>{{ route.difficulty }}</b></p>
+                            <p class="route-card-misc-info-text">Pitches: <b>{{ route.pitch }}</b></p>
+                            <p class="route-card-misc-info-text">Type: <b>{{ route.climb_type }}</b></p>
+                        </div>
+                    </div>
+                    <img src="{% static 'images/route-image.jpg' %}" alt="" class="route-card-image">
+                </div>
+            {% endfor %}
+        </div>
     </div>
-    <!-- ROUTE HEADER SEARCH RESULTS END -->
-    <div>
-        <p>Wanna contribute?</p>
+    <!-- ROUTE SEARCH RESULTS END -->
+    <div class="add-route-link-container">
+        <p class="add-route-link-text">Couldn't Find a route? Wanna contribute?</p>
         {% if user.is_authenticated %}
-            <div class="add_route">
-                <a href="{% url 'create_route' %}">Add a Route!</a>
-            </div>
+            <a href="{% url 'create_route' %}">
+                <div class="route-page-create-route-button">Create Route</div>
+            </a>
         {% else %}
-            <div>
-                <a href="{% url 'signup' %}">Create an account to make a route!</a>
-            </div>
+            <a href="{% url 'signup' %}">
+                <div class="route-page-create-route-button">Create Account</div>
+            </a>
         {% endif %}
     </div>
 {% endblock %}
