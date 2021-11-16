@@ -108,7 +108,11 @@
                             <p class="route-card-misc-info-text">Type: <b>{{ route.climb_type }}</b></p>
                         </div>
                     </div>
-                    <img src="{% static 'images/route-image.jpg' %}" alt="" class="route-card-image">
+                    {% if route.url %}
+                        <img src="{{ route.url }}" alt="" class="route-card-image">
+                    {% else %}
+                        <img src="{% static 'images/route-image.jpg' %}" alt="" class="route-card-image">
+                    {% endif %}
                 </div>
             {% endfor %}
         </div>

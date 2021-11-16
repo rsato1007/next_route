@@ -850,7 +850,8 @@
 
 .route-page-image {
     width: 100%;
-    height: auto;
+    height: 500px;
+    object-fit: cover;
 }
 
 .route-page-image-header {
