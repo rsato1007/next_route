@@ -249,6 +249,15 @@ class RouteUpdate(View):
         return render(request, "edit_route.html", context)
 
     def post(self, request, pk):
+        # We'll handle the image upload first
+        route_image = request.FILES.get('image', False)
+        url = False
+        # This is what generates the URL for our bucket.
+        if route_image:
+            s3 = boto3.client('s3')
+            key = uuid.uuid4().hex[:6] + route_image.name[route_image.name.rfind('.'):]
+            s3.upload_fileobj(route_image, BUCKET, key)
+            url = f"{S3_BASE_URL}{BUCKET}/{key}"
         name = request.POST.get('name')
         location = request.POST.get('location')
         difficulty = request.POST.get('difficulty')
@@ -256,7 +265,7 @@ class RouteUpdate(View):
         image = request.POST.get('image')
         climb_type = request.POST.get('climb_type')
         pitch = request.POST.get('pitch')
-        Route.objects.filter(pk=pk).update(name=name, location=location, difficulty=difficulty, description=description, image=image, climb_type=climb_type, pitch=pitch)
+        Route.objects.filter(pk=pk).update(name=name, location=location, difficulty=difficulty, description=description, url=url, climb_type=climb_type, pitch=pitch)
         return redirect('route_page', pk=pk)
 
 # ALL REVIEW VIEWS

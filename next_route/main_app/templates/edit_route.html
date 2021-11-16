@@ -5,7 +5,7 @@
 <img src="{% static 'images/route-page.jpg' route.pk %}" alt="" class="page-background-image">
     <div class="form-popup route-form route-form-first-half">
         <div class="form-header">Edit Route</div>
-        <form method="post" url="/route/{{route.pk}}/update/" class="form">
+        <form method="post" url="/route/{{route.pk}}/update/" class="form" enctype="multipart/form-data">
             {% csrf_token %}
             <label for="name" class="form-label">Route Name:</label>
             <br>
