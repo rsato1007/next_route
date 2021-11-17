@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 {% block title %} {{user_profile.username}}'s Profile Page {% endblock %}
 {% block content %}
     <div class="profile-page-container">
@@ -23,8 +24,8 @@
                     <span class="profile-page-card-text">{{ user.location }}</span>
                 </div>
                 <div class="profile-page-individual-info">
-                    <span class="profile-page-card-text-title">Date Joined:</span>
-                    <span class="profile-page-card-text">{{ user.date_joined }}</span>
+                    <span class="profile-page-card-text-title">Member Since:</span>
+                    <span class="profile-page-card-text">{{ user.date_joined|naturalday }}</span>
                 </div>
                 <div class="profile-page-individual-info">
                     <span class="profile-page-card-text-title">Routes Posted:</span>
@@ -55,6 +56,7 @@
                         <div class="route-card-review-container">
                             <p class="route-card-reviews-text">{{ route.review.count }} Reviews</p>
                         </div>
+                        <p class="posted_time">Posted: {{ route.created_at|naturaltime }}</p>
                         <div class="route-card-location-view">
                             <p class="route-card-location-text">Located: {{ route.location }}</p>
                             <a href="{% url 'route_page' route.pk %}" class="view-route-button-link"><div class="view-route-button">View Route</div></a>
@@ -89,7 +91,7 @@
                             <h5 class="review-username">{{ review.route.name }}</h5>
                             <div class="review-top-section-rating-posted">
                                 <div>{{ review.rating }}/5</div>
-                                <div class="review-posted-time">Posted 1 Hour Ago</div>
+                                <div class="review-posted-time">Posted {{ review.posted_at|naturaltime }}</div>
                             </div>
                         </div>
                     </div>

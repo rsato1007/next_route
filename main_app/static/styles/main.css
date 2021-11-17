@@ -717,13 +717,22 @@
 }
 
 .route-card-review-container {
-    margin-bottom: 30px;
+    margin-bottom: 16px;
 }
 
 .route-card-reviews-text {
     margin: 0;
     font-family: var(--font-merriweather);
     font-size: clamp(13px, 1.5vw, 16px);
+}
+
+.posted_time {
+    margin-top: 0;
+    font-family: var(--font-merriweather);
+    color: #5C5C5C;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 0.9em;
 }
 
 .route-card-location-view {

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 {% block title %} Find a Route {% endblock %}
 {% block content %}
     <!-- SEARCH FORM START -->
@@ -104,6 +105,7 @@
                         <div class="route-card-review-container">
                             <p class="route-card-reviews-text">{{ route.review.count }} Reviews</p>
                         </div>
+                        <p class="posted_time">Posted: {{ route.created_at|naturaltime }}</p>
                         <div class="route-card-location-view">
                             <p class="route-card-location-text">Located: {{ route.location }}</p>
                             <a href="{% url 'route_page' route.pk %}" class="view-route-button-link"><div class="view-route-button">View Route</div></a>
