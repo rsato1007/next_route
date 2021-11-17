@@ -82,11 +82,17 @@
             {% if route_list %}
                 <h3 class="route-results-header-text">Showing {{ route_list.count }} Route(s)</h3>
             {% else %}
-                <h3>No Routes Found</h3>
+                <h3 class="route-results-header-text">No Routes Found</h3>
             {% endif %}
             <div class="results-sort-by-container">
                 <div class="sort-by-text">Sort by:</div>
-                <div class="route-results-button">Reviews</div>
+                <!-- <div class="route-results-button">Reviews</div> -->
+                <select class="route-results-button">
+                    <option value="default">Select</option>
+                    <option value="diff" class="route-sort-option sort-option">Difficulty</option>
+                    <option value="pitch" class="route-sort-option sort-option">Pitch</option>
+                    <option value="new" class="route-sort-option sort-option">Newest</option>
+                </select>
             </div>
         </div>
         <!-- LIST OF ROUTES -->
@@ -108,7 +114,7 @@
                             <p class="route-card-misc-info-text">Type: <b>{{ route.climb_type }}</b></p>
                         </div>
                     </div>
-                    {% if route.url %}
+                    {% if route.url != "False" %}
                         <img src="{{ route.url }}" alt="" class="route-card-image">
                     {% else %}
                         <img src="{% static 'images/route-image.jpg' %}" alt="" class="route-card-image">

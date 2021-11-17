@@ -20,6 +20,6 @@ For context, this website is part of my capstone project for General Assembly's 
 - Adding the ability to have admin who can monitor the website and alter content deemed inappropriate.
 - Additional authentication measures to the app.
 ## Challenges
-Initially this project started as the_climbers_route (which is also on my github page). That project was built using Django React, but after some inital issues, I decided to start over with base Django and focus on making a tightly run app.
+Initially this project started as the_climbers_route (which is also on my github page). That project was built using Django React, but after some inital issues, I decided to start over with base Django and focus on making a fully functional app given this project needed to be done in 3 weeks. So, the challenge was having to start over after 10 days.
 ## Contact
 If you have questions, I can be reached at Robertmsato@gmail.com

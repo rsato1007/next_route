@@ -163,3 +163,18 @@ if (document.querySelector(".route-go-back")) {
         showElement(document.querySelector(".route-form-first-half"));
     })
 }
+
+if (document.querySelector(".route-sort-option")) {
+    const sortRoutes = (e) => {
+        e.preventDefault();
+        if (e.target.value !== "default" && window.location.href.includes("?") && !(window.location.href.includes("sort"))) {
+            let url = window.location.href.toString();
+            window.location.assign(url + "&sort=" + e.target.value);
+        } else if (e.target.value !== "default" && window.location.href.includes("sort")) {
+            const url = window.location.href.toString();
+            const oldUrlPart = url.substring(url.indexOf("sort"), url.length);
+            window.location.assign(url.replace(oldUrlPart, "sort=" + e.target.value));
+        }
+    }
+    document.querySelector(".route-results-button").addEventListener("change", (e) => sortRoutes(e));
+}

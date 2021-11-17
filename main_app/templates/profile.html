@@ -6,7 +6,7 @@
         <!-- Profile Card -->
         <div class="profile-page-card-container">
             <div class="profile-page-image-container">
-                {% if user_profile.url %}
+                {% if user_profile.url != "False" %}
                     <img src="{{ user_profile.url }}" alt="" class="profile-user-image">
                 {% else %}
                     <img src="{% static 'images/blank-profile-pic.jpg' %}" alt="" class="profile-user-image">
@@ -56,7 +56,7 @@
                             <p class="route-card-misc-info-text">Type: <b>{{ route.climb_type }}</b></p>
                         </div>
                     </div>
-                    {% if route.url %}
+                    {% if route.url != "False" %}
                         <img src="{{ route.url }}" alt="" class="route-card-image">
                     {% else %}
                         <img src="{% static 'images/route-image.jpg' %}" alt="" class="route-card-image">
@@ -71,7 +71,7 @@
             {% for review in reviews %}
                 <div class="individual-review">
                     <div class="review-top-section">
-                        {% if review.user.url %}
+                        {% if review.user.url != "False" %}
                             <img src="{{ review.user.url }}" alt="" class="review-user-image">
                         {% else %}
                             <img src="{% static 'images/blank-profile-pic.jpg' %}" alt="" class="review-user-image">

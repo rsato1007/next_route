@@ -161,13 +161,21 @@ class RouteSearch(ListView):
             # Let's do Validations in here instead.
             min_difficulty = self.request.GET.get("min-difficulty")
             max_difficulty = self.request.GET.get('max-difficulty')
+            sort = self.request.GET.get("sort")
             q = difficulty_range(min_difficulty, max_difficulty)
             routes = Route.objects.filter(
                 difficulty__in=q,
                 pitch__range=(0, int(self.request.GET.get("max-pitches"))),
                 location__icontains=self.request.GET.get("location")
             )
-            return routes
+            if sort == "diff":
+                return routes.order_by('-difficulty')
+            elif sort == "pitch":
+                return routes.order_by('-pitch')
+            elif sort == "new":
+                return routes.order_by("-created_at")
+            else:
+                return routes
 
     # def get_context_data(self, **kwargs):
     #     if self.request.GET:
@@ -188,7 +196,8 @@ class CreateRoute(View):
 
     def get(self, request):
         if request.user.is_authenticated:
-            return render(request, 'create_route.html')
+            context = {"range": range(11), "difficulty": difficulty_range("5.0", "5.15") }
+            return render(request, 'create_route.html', context)
         else:
             raise PermissionDenied()
 

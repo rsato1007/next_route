@@ -25,6 +25,11 @@
         background-color: var(--page-bg);
     }
 
+    html,
+    body {
+        height: 100%;
+    }
+
     .show {
         display: block;
     }
@@ -136,6 +141,7 @@
         text-align: center;
         font-family: var(--font-merriweather);
         font-size: 13px;
+        width: 100%;
     }
 
     .footer-line {
@@ -667,16 +673,16 @@
 }
 
 .route-results-button {
-    height: clamp(30px, 2vw, 35px);
+    height: clamp(30px, 2.5vw, 40px);
     width: clamp(90px, 2vw, 120px);
-    font-size: clamp(16px, 2vw, 18px);
+    font-size: clamp(14px, 2vw, 16px);
     background-color: var(--main-button-color);
     color: var(--page-bg);
     text-align: center;
     line-height: clamp(30px, 2vw, 35px);
     font-weight: bold;
     font-family: var(--font-overpass);
-    border-radius: 10px;
+    border-radius: 5px;
     display: inline-block;
 }
 

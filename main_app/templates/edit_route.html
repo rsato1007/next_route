@@ -22,7 +22,7 @@
                 {% if num == route.difficulty %}
                   <option value="{{ num }}" selected>{{ num }}</option>
                 {% else %}
-                  <option value="{{ num }}" selected>{{ num }}</option>
+                  <option value="{{ num }}">{{ num }}</option>
                 {% endif %}
               {% endfor %}
             </select>
@@ -51,7 +51,7 @@
                     <label for="climb_type" class="form-label">Climb Type</label>
                     <br>
                     <select name="climb_type" id="climb_type" class="form-input">
-                      {% with "Ice Rock Mixed" as list %}
+                      {% with "Ice Rock Mixed Boulder Aid" as list %}
                         {% for type in list.split %}
                           {% if type == route.climb_type %}
                             <option value="{{ type }}" selected>{{ type }}</option>
