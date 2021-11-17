@@ -175,21 +175,7 @@ class RouteSearch(ListView):
             elif sort == "new":
                 return routes.order_by("-created_at")
             else:
-                return routes
-
-    # def get_context_data(self, **kwargs):
-    #     if self.request.GET:
-    #         min_difficulty = self.request.GET.get("min-difficulty")
-    #         max_difficulty = self.request.GET.get('max-difficulty')
-    #         q = difficulty_range(min_difficulty, max_difficulty)
-    #         routes = Route.objects.filter(
-    #             difficulty__in=q,
-    #             pitch__range=(0, int(self.request.GET.get("max-pitches"))),
-    #             location__icontains=self.request.GET.get("location")
-    #         )
-    #         context = super().get_context_data(**kwargs)
-    #         context["routes"] = routes
-            
+                return routes        
 
 @method_decorator(login_required, name='dispatch')
 class CreateRoute(View):
@@ -243,6 +229,7 @@ class RoutePage(DetailView):
         context = super().get_context_data(**kwargs)
         context["reviews"] = route.review.all().order_by('-posted_at')
         context["review_score"] = reviewAverage(context["reviews"])
+        context["user_review"] = context["reviews"].filter(user__pk = self.request.user.pk)
         return context
 
 @method_decorator(login_required, name='dispatch')

@@ -40,9 +40,9 @@
             <div class="route-details-description-review-header">Route Reviews:</div>
             <div class="route-reviews-button-score-container">
                 <span>AVERAGE SCORE: {{ review_score }} out of 5 stars</span>
-                {% if user.is_authenticated and user.pk != route.user.pk %}
+                {% if user.is_authenticated and user.pk != route.user.pk and not user_review %}
                     <span class="write-review-button review-button review-button-colored">Write a Review</span>
-                {% elif user.is_authenticated and user.pk == route.user.pk %}
+                {% elif user.is_authenticated and user.pk == route.user.pk or user_review %}
                     <span class="review-button review-button-gray">Write a Review</span>
                 {% else %}
                     <a href="{% url 'signup' %}"><span class="review-button review-button-colored">Write a Review</span></a>
@@ -177,7 +177,7 @@
         </div>
     </div>
     <!-- THIS IS NEW REVIEW FORM -->
-    {% if user.is_authenticated and route.user.pk != user.pk %}
+    {% if user.is_authenticated and route.user.pk != user.pk and not user_review %}
         <div class="route-review-form-container no-show form-popup-container">
             <div class="form-popup new-review-form">
                 <div class="form-header">Write Review</div>
