@@ -49,7 +49,6 @@ class Signup(View):
 class ProfilePage(TemplateView):
     model = CustomUser
     template_name = 'profile.html'
-    # What does this do: ordering = ['created_at']
 
     def get_context_data(self, pk, **kwargs):
         user = CustomUser.objects.get(pk=pk)

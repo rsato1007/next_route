@@ -12,6 +12,7 @@ const editProfileButtonEl = document.querySelector(".edit_profile_button");
 const editProfileCancelButtonEl = document.querySelector(".edit_profile_cancel_button");
 const passwordInputEl = document.querySelector(".password-required");
 
+// All my functions I used 
 const showElement = (domEl) => {
     domEl.classList.add('show');
     domEl.classList.remove("no-show");
@@ -50,6 +51,8 @@ const passWordValidation = (field1, field2) => {
     }
 }
 
+// USER PROFILE EVENT LISTENERS
+
 if (userRouteButtonEl) {
     userRouteButtonEl.addEventListener("click", (e) => {
         e.preventDefault();
@@ -73,6 +76,8 @@ if (userReviewButtonEl) {
         whiteButton(document.querySelector(".user_routes_button"));
     });
 }
+
+// ROUTE PAGE EVENT LISTENERS
 
 if (writeReviewButtonEl) {
     writeReviewButtonEl.addEventListener("click", (e) => {

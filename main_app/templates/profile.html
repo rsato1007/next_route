@@ -26,8 +26,17 @@
                     <span class="profile-page-card-text-title">Date Joined:</span>
                     <span class="profile-page-card-text">{{ user.date_joined }}</span>
                 </div>
+                <div class="profile-page-individual-info">
+                    <span class="profile-page-card-text-title">Routes Posted:</span>
+                    <span class="profile-page-card-text">{{ routes.count }}</span>
+                </div>
+                <div class="profile-page-individual-info">
+                    <span class="profile-page-card-text-title">Reviews Posted:</span>
+                    <span class="profile-page-card-text">{{ reviews.count }}</span>
+                </div>
             </div>
         </div>
+        <!-- PROFILE REVIEW/ROUTES SECTION -->
         <div class="profile-page-routes-reviews-top-section">
             <h4 class="profile-page-route-review-num">
                 <p class="user_routes_header show profile-page-num-results">{{ routes.count }} Route(s) from {{user_profile.username}}</p>
@@ -40,7 +49,7 @@
         </div>
         <div class="user_routes show">
             {% for route in routes %}
-                <div class="individual-route-card-container">
+                <div class="individual-route-card-container route-num-{{ forloop.counter }}">
                     <div class="route-card-information-container">
                         <h3 class="route-card-name">{{ route.name }}</h3>
                         <div class="route-card-review-container">
@@ -69,7 +78,7 @@
         <!-- USER REVIEW SECTION -->
         <div class="user_reviews no-show">
             {% for review in reviews %}
-                <div class="individual-review">
+                <div class="individual-review review-num-{{ forloop.counter }}">
                     <div class="review-top-section">
                         {% if review.user.url != "False" %}
                             <img src="{{ review.user.url }}" alt="" class="review-user-image">
