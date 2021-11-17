@@ -176,7 +176,7 @@
                             <br>
                             <label for="content"  class="form-label">Explain Why You Gave It That Score:</label>
                             <br>
-                            <textarea rows="4" cols="20" id="content" name="content" class="form-input" required>{{ review.content }}</textarea>
+                            <textarea maxlength="1250" rows="4" cols="20" id="content" name="content" class="form-input" required>{{ review.content }}</textarea>
                             <br>
                             <div class="form-buttons-container">
                                 <div class="edit-review-cancel-button cancel-button">Cancel</div>
@@ -215,15 +215,15 @@
                     {% csrf_token %}
                     <label for="location" class="form-label">Location</label>
                     <br>
-                    <input type="text" name="location" id="location" class="form-input">
+                    <input type="text" name="location" id="location" class="form-input" maxlength="100">
                     <br>
                     <label for="password" class="form-label">Update Password</label>
                     <br>
-                    <input type="password" name="password" id="password" class="password-required form-input">
+                    <input type="password" name="password" id="password" class="password-required form-input" minlength="8">
                     <br>
                     <label for="password" class="form-label">Re-Enter New Password</label>
                     <br>
-                    <input type="password" name="password_reenter" id="password_reenter" class="form-input">
+                    <input type="password" name="password_reenter" id="password_reenter" class="form-input" minlength="">
                     <br>
                     <p class="password-message no-show">Passwords must be matching</p>
                     <label for="image" class="form-label">Update Profile Image</label>

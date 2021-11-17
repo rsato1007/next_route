@@ -10,7 +10,7 @@
     <!-- NEW FORM -->
     <label for="id_username" class="form-label">Username</label>
     <br>
-    <input type="text" name="username" maxlength="150" autofocus required id="id_username" class="form-input">
+    <input class="form-input" type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username">
     <br>
     <label for="id_location" class="form-label">Location</label>
     <br>
@@ -18,11 +18,11 @@
     <br>
     <label for="id_password1" class="form-label">Password</label>
     <br>
-    <input type="password" name="password1" autocomplete="new-password" required id="id_password1" class="form-input">
+    <input type="password" name="password1" autocomplete="new-password" required id="id_password1" class="form-input" minlength="8">
     <br>
     <label for="id_password2" class="form-label">Password Confirmation</label>
     <br>
-    <input type="password" name="password2" autocomplete="new-password" required id="id_password2" class="form-input">
+    <input type="password" name="password2" autocomplete="new-password" required id="id_password2" class="form-input" minlength="8">
     <br>
     <!-- NEW FORM -->
     <input type="submit" class="btn login-button" value="Sign Up" />

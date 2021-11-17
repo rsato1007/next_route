@@ -9,15 +9,15 @@
             {% csrf_token %}
             <label for="name" class="form-label">Route Name:</label>
             <br>
-            <input type="text" id="name" name="name" class="form-input" value='{{ route.name }}'>
+            <input type="text" id="name" name="name" class="form-input" value='{{ route.name }}' maxlength="50" minlength="6" required>
             <br>
             <label for="location" class="form-label">Location:</label>
             <br>
-            <input type="text" id="location" name="location" class="form-input" value="{{ route.location }}">
+            <input type="text" id="location" name="location" class="form-input" value="{{ route.location }}" required maxlength="100" minlength="10">
             <br>
             <label for="difficulty" class="form-label">What's the difficulty?</label>
             <br>
-            <select id="difficulty" name="difficulty" class="form-input">
+            <select id="difficulty" name="difficulty" class="form-input" required>
               {% for num in difficulty %}
                 {% if num == route.difficulty %}
                   <option value="{{ num }}" selected>{{ num }}</option>
@@ -34,7 +34,7 @@
                 <div class="form form-part-2">
                     <label for="pitch" class="form-label">Number of Pitches</label>
                     <br>
-                    <select id="pitch" name="pitch" class="form-input">
+                    <select id="pitch" name="pitch" class="form-input" required>
                       {% for i in range %}
                         {% if i == route.pitch and i >= 10 %}
                           <option value="{{ i }}" selected>{{ i }}+</option>
@@ -50,7 +50,7 @@
                     <br>
                     <label for="climb_type" class="form-label">Climb Type</label>
                     <br>
-                    <select name="climb_type" id="climb_type" class="form-input">
+                    <select name="climb_type" id="climb_type" class="form-input" required>
                       {% with "Ice Rock Mixed Boulder Aid" as list %}
                         {% for type in list.split %}
                           {% if type == route.climb_type %}
@@ -64,7 +64,7 @@
                     <br>
                     <label for="description" class="form-label">Briefly Describe Route</label>
                     <br>
-                    <textarea class="form-input" rows="4" cols="20" id="description" name="description" required>{{ route.description }}</textarea>
+                    <textarea class="form-input" rows="4" cols="20" id="description" name="description" maxlength="2200" required>{{ route.description }}</textarea>
                     <br>
                     <label for="image" class="form-label">Upload Image:</label>
                     <br>
