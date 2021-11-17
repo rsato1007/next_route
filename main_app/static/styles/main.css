@@ -648,8 +648,12 @@
 }
 
 .route-results-container {
-    margin: 45px auto 45px auto;
+    margin: 45px auto 25vw auto;
     width: clamp(500px, 50%, 50%);
+    margin-top: 45px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 193px;
 }
 
 .route-results-header {
