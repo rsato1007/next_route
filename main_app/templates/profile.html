@@ -97,7 +97,7 @@
                 <div class="edit-review-form no-show form-popup-container">
                     <div class="form-popup update-review-form">
                         <div class="form-header">Edit Review</div>
-                        <form method="post" action="/route/{{ review.route.pk }}/review/{{ review.pk }}/update/" class="form">
+                        <form method="post" action="/profile/{{ user.pk }}/review/{{ review.pk }}/update/" class="form">
                             {% csrf_token %}
                             <label for="rating" class="form-label">Rating:</label>
                             <br>
@@ -184,7 +184,7 @@
                         <p class="delete-review-text">This can't be undone</p>
                         <div class="form-buttons-container delete-button-container">
                             <div class="delete-review-cancel-button cancel-delete-review-button">Cancel</div>
-                            <a href="/route/{{ review.route.pk }}/review/{{ review.pk }}/delete/"><div class="submit-review-delete-button">Delete</div></a>
+                            <a href="/profile/{{ user.pk }}/review/{{ review.pk }}/delete/"><div class="submit-review-delete-button">Delete</div></a>
                         </div>
                     </div>
                 </div>
@@ -200,7 +200,7 @@
         <div class="edit_profile_container no-show form-popup-container">
             <div class="form-popup  update-profile-form">
                 <div class="form-header">Update Profile</div>
-                <form action="/accounts/{{ user_profile.pk }}/edit/" method="post" class="form" enctype="multipart/form-data">
+                <form action="/accounts/{{ user_profile.pk }}/edit/?profile=True" method="post" class="form" enctype="multipart/form-data">
                     {% csrf_token %}
                     <label for="location" class="form-label">Location</label>
                     <br>

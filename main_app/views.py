@@ -284,8 +284,23 @@ class ReviewUpdate(View):
         return redirect('route_page', pk=pk)
 
 @method_decorator(login_required, name='dispatch')
+class ReviewUpdateProfile(View):
+    def post(self, request, pk, review_pk):
+        rating = request.POST.get('rating')
+        content = request.POST.get('content')
+        Review.objects.filter(pk=review_pk).update(rating=rating, content=content)
+        return redirect('profile', pk=pk)
+
+@method_decorator(login_required, name='dispatch')
 class ReviewDelete(View):
     def get(self, request, pk, review_pk):
         review = Review.objects.get(pk=review_pk)
         review.delete()
         return redirect('route_page', pk=pk)
+
+@method_decorator(login_required, name='dispatch')
+class ReviewDeleteProfile(View):
+    def get(self, request, pk, review_pk):
+        review = Review.objects.get(pk=review_pk)
+        review.delete()
+        return redirect('profile', pk=pk)

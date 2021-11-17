@@ -23,7 +23,9 @@ urlpatterns = [
     # Add, edit, delete
     path('route/<int:pk>/review/new/', views.CreateReview.as_view(), name="create_review"),
     path('route/<int:pk>/review/<int:review_pk>/update/', views.ReviewUpdate.as_view(), name="review_update"),
-    path('route/<int:pk>/review/<int:review_pk>/delete/', views.ReviewDelete.as_view(), name="review_delete")
+    path('profile/<int:pk>/review/<int:review_pk>/update/', views.ReviewUpdateProfile.as_view(), name="review_update_profile"),
+    path('route/<int:pk>/review/<int:review_pk>/delete/', views.ReviewDelete.as_view(), name="review_delete"),
+    path('profile/<int:pk>/review/<int:review_pk>/delete/', views.ReviewDeleteProfile.as_view(), name="review_delete_profile")
 
     # like urls
     # add, delete
