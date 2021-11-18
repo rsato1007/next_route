@@ -100,6 +100,7 @@ class EditProfile(View):
             updatedUser['url'] = user[0].url
 
         user.update(location = updatedUser['location'], password = updatedUser['password'], url = updatedUser['url'])
+        login(request, user)
         return redirect('profile', pk=pk)
 
 # @method_decorator(login_required, name='dispatch')

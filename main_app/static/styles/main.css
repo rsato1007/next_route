@@ -131,6 +131,14 @@
             left: 16.3vw;
             top: -7px;
         }
+
+        .navbar-button {
+            margin-left: 20px;
+            height: 30px;
+            width: 80px;
+            font-size: 12px;
+            line-height: 30px;
+        }
     }
     /* NAVBAR STYLING END */
 
@@ -361,6 +369,10 @@
         filter: brightness(60%);
     }
     /* BACKGROUND IMAGE STYLING END */
+    @media only screen and(max-width: 800px) {
+
+    }
+
 /* UNIVERSAL STYLING END */
 
 /* SIGNUP PAGE STYLING START */
@@ -429,6 +441,10 @@
     font-family: var(--font-overpass);
     line-height: 30px;
     font-size: 18px;
+}
+
+@media only screen and(max-width: 800px) {
+
 }
 /* SPLASH PAGE STYLING END */
 
@@ -823,6 +839,28 @@
 
 .route-page-create-route-button:hover {
     background-color: var(--main-button-color-darker);
+}
+
+@media only screen and (max-width: 1000px){
+    .submit-search-button {
+        font-size: clamp( 0.8em, 2vw, 3vw);
+    }
+    .about-section-container {
+        padding: 15px;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 670px){
+    .about-section-container {
+        display: block;
+        text-align: center;
+    }
+
+    .about-section-item {
+        width: 100%;
+        padding: 0 20px;
+    }
 }
 /* SEARCH PAGE STYLING END */
 
