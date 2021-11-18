@@ -10,8 +10,8 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.core.exceptions import PermissionDenied
-# This is only temporary until I actually add something.
-from django.http import HttpResponse
+from django.core.mail import send_mail
+from django.conf import settings
 from django.db.models import Q
 from decimal import Decimal
 import operator
@@ -41,6 +41,13 @@ class Signup(View):
         if form.is_valid():
             user = form.save()
             login(request, user)
+            email_message="Hi " + user.username + "!" + "\n" + "Welcome to next route! We're excited to see what routes you master."
+            send_mail(
+                subject="Welcome to Next Route",
+                message=email_message,
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=[user.email]
+            )
             return redirect("splash_page")
         else:
             context = {"form": form}
@@ -71,6 +78,13 @@ class EditProfile(View):
             updatedUser['location'] = user[0].location
         if request.POST.get('password'):
             updatedUser['password'] = make_password(request.POST.get('password'))
+            email_message="Hi " + user[0].username + "!" + "\n" + "You are receiving this email because your password was recently changed." + "\n" + "If you didn't intiate this change, please contact us immediately."
+            send_mail(
+                subject="NextRoute Password Change",
+                message=email_message,
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=[user[0].email]
+            )
         else:
             updatedUser['password'] = user[0].password
         if request.FILES.get('image'):
