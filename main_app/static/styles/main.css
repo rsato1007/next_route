@@ -443,8 +443,33 @@
     font-size: 18px;
 }
 
-@media only screen and(max-width: 800px) {
+@media only screen and (max-width: 1000px) {
+    .about-section-container {
+        padding: 15px 0;
+        width: 100%;
+        margin-bottom: 150px;
+    }
 
+    .about-section-item {
+        height: 150px;
+    }
+}
+
+@media only screen and (max-width: 670px){
+    .about-section-container {
+        display: block;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .about-section-item {
+        width: 100%;
+    }
+
+    .about-section-item-text {
+        padding: 5px 40px 0px 40px;
+        margin-top: 9px;
+    }
 }
 /* SPLASH PAGE STYLING END */
 
@@ -841,25 +866,62 @@
     background-color: var(--main-button-color-darker);
 }
 
-@media only screen and (max-width: 1000px){
+@media only screen and (max-width: 1000px) {
     .submit-search-button {
-        font-size: clamp( 0.8em, 2vw, 3vw);
+        font-size: clamp(0.8em, 1vw, 20px);
     }
-    .about-section-container {
-        padding: 15px;
-        width: 100%;
+
+    .add-route-link-container {
+        display: grid;
+        grid-template-columns: 60% 40%;
+    }
+
+    .add-route-link-text {
+        justify-self: end;
     }
 }
 
-@media only screen and (max-width: 670px){
-    .about-section-container {
-        display: block;
-        text-align: center;
+@media only screen and (max-width: 800px) {
+    .add-route-link-text {
+        font-size: 1em;
+        margin-left: -45px;
     }
 
-    .about-section-item {
-        width: 100%;
-        padding: 0 20px;
+    .route-page-create-route-button {
+        height: 20px;
+        width: 112px;
+        line-height: 20px;
+        font-size: 0.9em;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .search-form {
+        display: inline-block;
+    }
+
+    .search-min-diff-input {
+        width: 166px;
+    }
+
+    .search-max-diff-input {
+        width: 166px;
+    }
+
+    .search-pitch-input {
+        width: 166px;
+    }
+
+    .submit-search-button {
+        height: 24px;
+        line-height: 24px;
+        width: 165px;
+        margin-left: 0px;
+    }
+
+    .add-route-link-container {
+        display: grid;
+        grid-template-columns: 67% 33%;
     }
 }
 /* SEARCH PAGE STYLING END */
