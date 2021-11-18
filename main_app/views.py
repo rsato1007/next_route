@@ -174,7 +174,7 @@ class RouteSearch(ListView):
             elif sort == "new":
                 return routes.order_by("-created_at")
             else:
-                return routes        
+                return routes
 
 @method_decorator(login_required, name='dispatch')
 class CreateRoute(View):

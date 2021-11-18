@@ -975,10 +975,30 @@
 
 .route-reviews-button-score-container {
     padding: 30px 50px 20px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.review-stars-container {
+    display: flex;
+}
+
+.review-stars {
+    height: 70px;
+    width: 300px;
+    object-fit: cover;
+    margin-top: -5px;
+    display: inline-block;
+}
+
+.average-review-score {
+    margin-top: 25px;
+    font-size: 1.2em;
+    font-family: var(--font-maven);
 }
 
 .review-button {
-    float: right;
     height: 35px;
     width: 150px;
     text-align: center;
@@ -988,6 +1008,7 @@
     color: var(--page-bg);
     border-radius: 5px;
     font-size: 1.1rem;
+    justify-self: end;
 }
 
 .review-button-colored {
@@ -1052,6 +1073,14 @@
 
 .review-top-section-rating-posted {
     display: inline-flex;
+}
+
+.individual-review-rating {
+    height: 30px;
+    width: 120px;
+    object-fit: cover;
+    margin-left: -6px;
+    margin-top: -5px;
 }
 
 .review-posted-time {
