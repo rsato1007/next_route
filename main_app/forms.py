@@ -6,13 +6,13 @@ class MyUserCreationForm(UserCreationForm):
 
     class Meta(UserCreationForm):
         model = CustomUser
-        fields = ('username', 'location', 'is_admin', 'is_banned')
+        fields = ('username', 'email', 'location', 'is_admin', 'is_banned')
 
 class MyUserChangeForm(UserChangeForm):
 
     class Meta(UserChangeForm):
         model = CustomUser
-        fields = ('username', 'location', 'is_admin', 'is_banned')
+        fields = ('username', 'email', 'location', 'is_admin', 'is_banned')
 
 class UpdateProfile(forms.ModelForm):
     username = forms.CharField(required=True)
