@@ -369,7 +369,7 @@
         filter: brightness(60%);
     }
     /* BACKGROUND IMAGE STYLING END */
-    @media only screen and(max-width: 800px) {
+    @media only screen and(max-width: 900px) {
 
     }
 
@@ -614,6 +614,21 @@
 .user_reviews {
     grid-area: 1 / 2 / 1 / 2;
     margin-top: 90px;
+}
+
+@media only screen and (max-width: 1150px) {
+    .profile-page-num-results {
+        font-size: clamp(16px, 2vw, 20px);
+    }
+
+    .profile-route-review-slider {
+        height: 35px;
+    }
+
+    .profile-slider-text {
+        line-height: 32px;
+        padding: 5px 15px;
+    }
 }
 /* PROFILE PAGE STYLING END */
 
@@ -906,20 +921,6 @@
         grid-area: 1 / 1 / 1 / 1;
     }
 
-    .add-route-link-text {
-        font-size: 1em;
-        margin-left: -45px;
-    }
-
-    .route-page-create-route-button {
-        height: 20px;
-        width: 112px;
-        line-height: 20px;
-        font-size: 0.9em;
-    }
-}
-
-@media only screen and (max-width: 700px) {
     .route-card-name {
         font-size: 17px;
     }
@@ -935,6 +936,21 @@
     .route-card-misc-info-text {
         font-size: 0.75em;
     }
+
+    .add-route-link-text {
+        font-size: 1em;
+        margin-left: -45px;
+    }
+
+    .route-page-create-route-button {
+        height: 20px;
+        width: 112px;
+        line-height: 20px;
+        font-size: 0.9em;
+    }
+}
+
+@media only screen and (max-width: 700px) {
 
     .search-form {
         display: inline-block;
@@ -1246,5 +1262,75 @@
     border-top: 1px solid var(--page-main-color);
     width: calc(100% - 40px);
     margin-top: 25px;
+}
+
+@media only screen and (max-width: 900px) {
+    .route-page-container {
+        margin-top: 8vw;
+    }
+
+    .route-page-image {
+        height: clamp(225px, 42vw, 400px);
+    }
+
+    .individual-review {
+        margin-top: 10px;
+    }
+
+    .review-line-break {
+        margin-top: 10px;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .route-details-description-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    .route-details-section {
+        grid-area: 1 / 1 / 1 / 1;
+        border-right: none;
+    }
+
+    .route-details-text-container {
+        display: flex;
+        font-size: 14px;
+        justify-content: space-between;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .route-details-text-bold {
+        display: block;
+    }
+
+    .route-description-section {
+        grid-area: 2 / 1 / 2 / 1;
+        border-left: none;
+    }
+
+    .average-review-score {
+        margin-top: 13px;
+    }
+
+    .route-reviews-button-score-container {
+        padding-top: 20px;
+        padding-right: 30px;
+        padding-bottom: 10px;
+    }
+
+    .review-stars {
+        height: 50px;
+        width: 220px;
+    }
+
+    .review-button {
+        height: 30px;
+        width: 120px;
+        line-height: 30px;
+        font-size: 0.9rem;
+        margin-top: -9px;
+    }
 }
 /* ROUTE PAGE STYLING END */
