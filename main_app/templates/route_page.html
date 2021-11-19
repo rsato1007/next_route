@@ -76,10 +76,10 @@
                 {% for review in reviews %}
                     <div class="individual-review">
                         <div class="review-top-section">
-                            {% if review.user.url != "False" or review.user.url %}
-                                <img src="{{ review.user.url }}" alt="" class="review-user-image">
-                            {% else %}
+                            {% if review.user.url == "False" or review.user.url %}
                                 <img src="{% static 'images/blank-profile-pic.jpg' %}" alt="" class="review-user-image">
+                            {% else %}
+                                <img src="{{ review.user.url }}" alt="" class="review-user-image">
                             {% endif %}
                             <div class="review-top-section-information">
                                 <h5 class="review-username">{{ review.user.username }}</h5>

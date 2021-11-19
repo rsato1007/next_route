@@ -7,10 +7,10 @@
         <!-- Profile Card -->
         <div class="profile-page-card-container">
             <div class="profile-page-image-container">
-                {% if user_profile.url != "False" or user_profile.url %}
-                    <img src="{{ user_profile.url }}" alt="" class="profile-user-image">
-                {% else %}
+                {% if user_profile.url == "False" or user_profile.url %}
                     <img src="{% static 'images/blank-profile-pic.jpg' %}" alt="" class="profile-user-image">
+                {% else %}
+                    <img src="{{ user_profile.url }}" alt="" class="profile-user-image">
                 {% endif %}  
             </div>
             <div class="profile-username-text">{{ user_profile.username }}</div>
