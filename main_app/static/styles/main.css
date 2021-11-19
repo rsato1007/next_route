@@ -866,6 +866,17 @@
     background-color: var(--main-button-color-darker);
 }
 
+@media only screen and (max-width: 1524px) {
+    .route-results-container {
+        margin: 45px auto 25vw auto;
+        width: 75vw;
+    }
+
+    .route-card-misc-info-text {
+        margin-bottom: 0.5vw;
+    }
+}
+
 @media only screen and (max-width: 1000px) {
     .submit-search-button {
         font-size: clamp(0.8em, 1vw, 20px);
@@ -882,6 +893,19 @@
 }
 
 @media only screen and (max-width: 800px) {
+    .individual-route-card-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 185px;
+    }
+
+    .route-card-information-container {
+        grid-area: 2 / 1 / 2 / 1;
+    }
+
+    .route-card-image {
+        grid-area: 1 / 1 / 1 / 1;
+    }
+
     .add-route-link-text {
         font-size: 1em;
         margin-left: -45px;
@@ -896,6 +920,22 @@
 }
 
 @media only screen and (max-width: 700px) {
+    .route-card-name {
+        font-size: 17px;
+    }
+
+    .posted_time {
+        font-size: 0.8em;
+    }
+
+    .route-card-location-text {
+        font-size: 0.9em;
+    }
+
+    .route-card-misc-info-text {
+        font-size: 0.75em;
+    }
+
     .search-form {
         display: inline-block;
     }
@@ -917,6 +957,10 @@
         line-height: 24px;
         width: 165px;
         margin-left: 0px;
+    }
+
+    .route-results-header {
+        width: 75vw;
     }
 
     .add-route-link-container {
