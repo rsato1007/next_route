@@ -8,7 +8,7 @@ class CustomUser(AbstractUser):
     location = models.CharField(max_length=100)
     is_admin = models.BooleanField(default=False)
     is_banned = models.BooleanField(default=False)
-    url = models.CharField(max_length=200, blank=True, null=True)
+    url = models.CharField(max_length=200, blank=True, default=False)
     
 class Route(models.Model):
     name = models.CharField(max_length=50)
