@@ -90,13 +90,13 @@
                         <div class="review-top-section-information">
                             <h5 class="review-username">{{ review.route.name }}</h5>
                             <div class="review-top-section-rating-posted">
-                                {% if review_score < 2 %}
+                                {% if review_score <= 1.0 %}
                                     <img src="{% static 'images/star-folder/one-star.png' %}" alt="" class="individual-review-rating">
-                                {% elif review_score < 3 %}
+                                {% elif review_score <= 2.0 %}
                                     <img src="{% static 'images/star-folder/two-star.png' %}" alt="" class="individual-review-rating">
-                                {% elif review_score < 4 %}
+                                {% elif review_score <= 3.0 %}
                                     <img src="{% static 'images/star-folder/three-star.png' %}" alt="" class="individual-review-rating">
-                                {% elif review_score < 5 %}
+                                {% elif review_score <= 4.0 %}
                                     <img src="{% static 'images/star-folder/four-star.png' %}" alt="" class="individual-review-rating">
                                 {% else %}
                                     <img src="{% static 'images/star-folder/five-star.png' %}" alt="" class="individual-review-rating">
