@@ -369,8 +369,20 @@
         filter: brightness(60%);
     }
     /* BACKGROUND IMAGE STYLING END */
-    @media only screen and(max-width: 900px) {
+    @media only screen and (max-width: 900px) {
+        /* .page-background-image {
+            height: 80vw;
+            width: 100vw;
+        } */
 
+        .form-header {
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .form-popup {
+            width: 300px;
+        }
     }
 
 /* UNIVERSAL STYLING END */

@@ -188,11 +188,11 @@
         </div>
         
     </div>
-    {% if user.is_authenticated and user.username == user_profile.username %}
+    {% if user.is_authenticated and user.pk == user_profile.id %}
         <div class="edit_profile_container no-show form-popup-container">
             <div class="form-popup  update-profile-form">
                 <div class="form-header">Update Profile</div>
-                <form action="/accounts/{{ user_profile.pk }}/edit/?profile=True" method="post" class="form" enctype="multipart/form-data">
+                <form action="/accounts/{{ user_profile.id }}/edit/" method="post" class="form" enctype="multipart/form-data">
                     {% csrf_token %}
                     <label for="location" class="form-label">Location</label>
                     <br>

@@ -59,6 +59,7 @@ class ProfilePage(TemplateView):
 
     def get_context_data(self, pk, **kwargs):
         user = CustomUser.objects.get(pk=pk)
+        print(user)
         context = super().get_context_data(**kwargs)
         context["user_profile"] = user
         # This will be our template for when the user starts posting routes and reviews.
@@ -98,9 +99,8 @@ class EditProfile(View):
                 updatedUser['url'] = url
         else:
             updatedUser['url'] = user[0].url
-
         user.update(location = updatedUser['location'], password = updatedUser['password'], url = updatedUser['url'])
-        login(request, user)
+        login(request, user[0])
         return redirect('profile', pk=pk)
 
 # @method_decorator(login_required, name='dispatch')
