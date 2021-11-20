@@ -109,7 +109,7 @@ if (document.querySelector(".profile-page-container")) {
 
     window.addEventListener('load', (e) => {
         browserWidth = window.innerWidth;
-        if (browserWidth , 1100) {
+        if (browserWidth < 1100) {
             const profilePageEl = document.querySelector(".profile-page-container");
             profilePageEl.append(imgEl);
         }
