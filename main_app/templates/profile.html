@@ -108,17 +108,17 @@
                     <div class="review-content">{{ review.content }}</div>
                     <div class="review-button-options">
                         {% if user.is_authenticated and review.user.username == user.username %}
-                            <p class="edit-review-button">Edit Review</p>
-                            <p class="delete-review-button">Delete Review</p>
+                            <p class="edit-review-button-profile edit-review-button">Edit Review</p>
+                            <p class="delete-review-button-profile delete-review-button">Delete Review</p>
                         {% endif %}
                     </div>
                 </div>
                 <!-- EDIT REVIEW FORM -->
-                {% if user.is_authenticated and review.user.username == user.username %}
+                {% if user.is_authenticated and review.user.pk == user.pk %}
                 <div class="edit-review-form no-show form-popup-container">
                     <div class="form-popup update-review-form">
                         <div class="form-header">Edit Review</div>
-                        <form method="post" action="/profile/{{ user.pk }}/review/{{ review.pk }}/update/" class="form">
+                        <form method="post" action="/profile/{{ user.pk }}/review/{{ review.id }}/update/" class="form">
                             {% csrf_token %}
                             <label for="rating" class="form-label">Rating:</label>
                             <br>

@@ -77,6 +77,30 @@ if (userReviewButtonEl) {
     });
 }
 
+if (document.querySelector(".edit-review-button-profile")) {
+    const editReviewProfileButtonEl = document.querySelectorAll(".edit-review-button-profile");
+    const deleteReviewProfileButtonEl = document.querySelectorAll(".delete-review-button-profile");
+    const editReviewFormProfileEl = document.querySelectorAll(".edit-review-form");
+    const editReviewCancelEl = document.querySelectorAll(".edit-review-cancel-button");
+    const deleteReviewFormProfileEl = document.querySelectorAll(".delete-review-form-container");
+    const deleteReviewCancelEl = document.querySelectorAll(".delete-review-cancel-button")
+
+    for (let i = 0; i < editReviewProfileButtonEl.length; i++) {
+        editReviewProfileButtonEl[i].addEventListener('click', (e) => {
+            showElement(editReviewFormProfileEl[i]);
+        });
+        editReviewCancelEl[i].addEventListener('click', (e) => {
+            hideElement(editReviewFormProfileEl[i])
+        });
+        deleteReviewProfileButtonEl[i].addEventListener('click', (e) => {
+            showElement(deleteReviewFormProfileEl[i]);
+        });
+        deleteReviewCancelEl[i].addEventListener('click', (e) => {
+            hideElement(deleteReviewFormProfileEl[i]);
+        })
+    }
+}
+
 // ROUTE PAGE EVENT LISTENERS
 
 if (writeReviewButtonEl) {
