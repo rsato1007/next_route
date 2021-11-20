@@ -107,9 +107,9 @@ if (document.querySelector(".profile-page-container")) {
     imgEl.classList.add("profile-card-background");
     imgEl.src="https://www.seattlenorthcountry.com/imager/s3_amazonaws_com/snohomish-2018/craft/Main-Images/SeattleNorthCountry_RockClimbing_Header-1920x1080_930104bc5592b0f48aa7a928055610d9.jpg";
 
-    window.addEventListener('load', (event) => {
+    window.addEventListener('load', (e) => {
         browserWidth = window.innerWidth;
-        if (browserWidth) {
+        if (browserWidth , 1100) {
             const profilePageEl = document.querySelector(".profile-page-container");
             profilePageEl.append(imgEl);
         }
