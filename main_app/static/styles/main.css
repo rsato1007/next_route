@@ -629,10 +629,6 @@
 }
 
 @media only screen and (max-width: 1150px) {
-    .profile-page-num-results {
-        font-size: clamp(16px, 2vw, 20px);
-    }
-
     .profile-route-review-slider {
         height: 35px;
     }
@@ -640,6 +636,94 @@
     .profile-slider-text {
         line-height: 32px;
         padding: 5px 15px;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .profile-page-container {
+        gap: 0px;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 50vw 1fr;
+        gap: 20px 0px;
+        min-height: 0vh;
+    }
+
+    .profile-page-card-container  {
+        grid-area: 1 / 1 / 1 / 1;
+        width: 42%;
+        justify-self: center;
+        background: white;
+    }
+
+    .profile-card-background {
+        grid-area: 1 / 1 / 1 / 1;
+        z-index: -5;
+        width: 100.2vw;
+        height: 55vw;
+        margin-top: -5vw;
+        /* margin-bottom: clamp(30px, 20vw, 200px); */
+        margin-left: -10vw;
+        margin-right: clamp(-35px, -10vw, -200px);
+        object-fit: cover;
+        overflow: hidden;
+    }
+
+    .profile-page-routes-reviews-top-section {
+        grid-area: 2 / 1 / 2 / 1;
+    }
+
+    .user_reviews {
+        grid-area: 2 / 1 / 2 / 1;
+    }
+
+    .user_routes {
+        grid-area: 2 / 1 / 2 / 1;
+    }
+}
+
+@media only screen and (max-width: 950px) {
+    .profile-page-container {
+        grid-template-rows: 60vw 1fr;
+    }
+
+    .profile-card-background {
+        height: 65vw;
+    }
+
+    .profile-page-card-container {
+        width: 55%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .profile-page-container {
+        grid-template-rows: 70vw 1fr;
+        grid-template-columns: 1fr;
+    }
+
+    .profile-card-background {
+        height: 75vw;
+    }
+    
+    .profile-page-num-results {
+        font-size: 20px;
+    }
+
+    .user_routes {
+        justify-self: center;
+    }
+
+    .individual-route-card-container {
+        width: 75vw;
+        margin: 0 auto;
+        margin-left: -3vw;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .profile-page-card-container {
+        width: 70%;
     }
 }
 /* PROFILE PAGE STYLING END */
@@ -941,9 +1025,26 @@
         grid-template-rows: 1fr 185px;
     }
 
+    .route-search-label {
+        height: 30px;
+    }
+
+    .min-diff-label {
+        margin-bottom: 2px;
+    }
+
+    .max-diff-label {
+        margin-bottom: 2px;
+    }
+
+    .max-pitch-label {
+        margin-bottom: 2px;
+    }
+
     .search-location-input {
         padding: 3px 0 3px 3px;
         width: 157px;
+        height: 23px;
     }
 
     .search-min-diff-input {
@@ -993,6 +1094,12 @@
         width: 112px;
         line-height: 20px;
         font-size: 0.9em;
+    }
+
+    .submit-search-button {
+        height: 31px;
+        line-height: 31px;
+        margin-top: 36px;
     }
 }
 

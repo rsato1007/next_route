@@ -101,6 +101,35 @@ if (document.querySelector(".edit-review-button-profile")) {
     }
 }
 
+if (document.querySelector(".profile-page-container")) {
+    let browserWidth = window.innerWidth;
+    const imgEl = document.createElement("img");
+    imgEl.classList.add("profile-card-background");
+    imgEl.src="https://www.seattlenorthcountry.com/imager/s3_amazonaws_com/snohomish-2018/craft/Main-Images/SeattleNorthCountry_RockClimbing_Header-1920x1080_930104bc5592b0f48aa7a928055610d9.jpg";
+
+    window.addEventListener('load', (event) => {
+        browserWidth = window.innerWidth;
+        if (browserWidth) {
+            const profilePageEl = document.querySelector(".profile-page-container");
+            profilePageEl.append(imgEl);
+        }
+    });
+
+    window.addEventListener("resize", (e) => {
+        browserWidth = window.innerWidth;
+        if (browserWidth < 1100) {
+            if (!(document.querySelector(".profile-card-background"))) {
+                const profilePageEl = document.querySelector(".profile-page-container");
+                profilePageEl.append(imgEl);
+            } else {
+                console.log("Holy jesus. What is that!?! WHAT THE FUCK IS THAT???");
+            }
+        } else {
+            document.querySelector(".profile-page-container").removeChild(document.querySelector(".profile-card-background"));
+        }
+    })
+}
+
 // ROUTE PAGE EVENT LISTENERS
 
 if (writeReviewButtonEl) {
