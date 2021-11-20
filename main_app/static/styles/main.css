@@ -676,29 +676,45 @@
 .search-location-input {
     width: clamp(150px, 24vw, 300px);
     font-size: 18px;
+    padding: 10px 0 10px 8px;
+    font-weight: bold;
+    color: var(--page-main-color);
+    letter-spacing: .9px;
 }
 
 .search-min-diff-input {
     width: clamp(120px, 17vw, 200px);
     font-size: 20px;
     text-align: center;
+    font-weight: bold;
+    color: var(--page-main-color);
+    letter-spacing: .9px;
+    padding: 9.5px;
 }
 
 .search-max-diff-input {
     width: clamp(120px, 17vw, 200px);
     font-size: 20px;
     text-align: center;
+    font-weight: bold;
+    color: var(--page-main-color);
+    letter-spacing: .9px;
+    padding: 9.5px;
 }
 
 .search-pitch-input {
     width: clamp(120px, 17vw, 200px);
     font-size: 20px;
     text-align: center;
+    font-weight: bold;
+    color: var(--page-main-color);
+    letter-spacing: .9px;
+    padding: 9.5px;
 }
 
 .submit-search-button {
-    height: 24px;
-    margin-top: 26px;
+    height: 45px;
+    margin-top: 25px;
     background-color: var(--main-button-color);
     color: var(--page-bg);
     border: none;
@@ -707,7 +723,7 @@
     font-family: var(--font-maven);
     font-weight: bold;
     font-size: 1.2em;
-    line-height: 24px;
+    line-height: 45px;
     border-radius: 5px;
 }
 
@@ -923,6 +939,24 @@
     .individual-route-card-container {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 185px;
+    }
+
+    .search-location-input {
+        padding: 3px 0 3px 3px;
+        width: 157px;
+    }
+
+    .search-min-diff-input {
+        width: 169px;
+        padding: 3.5px 0;
+    }
+
+    .search-max-diff-input {
+        padding: 3.5px 0;
+    }
+
+    .search-pitch-input {
+        padding: 3.5px 0;
     }
 
     .route-card-information-container {
